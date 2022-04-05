@@ -1,10 +1,126 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>首页</title>
+    <title>DHUsupermarket</title>
+    <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+    function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- //for-mobile-apps -->
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all">
+    <!--web-fonts-->
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+    <!--//web-fonts-->
+    <!--//fonts-->
+
 </head>
-<body bgcolor="#E3E3E3">
-<a th:href="@{/Goods}">资料管理主页</a>
+<body>
+<div class="banner-w3layouts" id="home">
+    <!--Top-Bar-->
+    <div class="header">
+        <nav class="navbar navbar-default">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <h1><a  href="index.html">DHU</a></h1>
+            </div>
+            <div class="top-nav-text">
+
+            </div>
+            <!-- navbar-header -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a class="hvr-underline-from-center active scroll" href="index.html">Home</a></li>
+                    <li><a href="#features" class="hvr-underline-from-center scroll">Loging</a></li>
+                    <li><a href="#capabilities" class="hvr-underline-from-center scroll">Goods</a></li>
+                    <li><a href="#team" class="hvr-underline-from-center scroll scroll">Error</a></li>
+                    <li><a href="#gallery" class="hvr-underline-from-center scroll scroll">Success</a></li>
+                    <li><a href="#contact" class="hvr-underline-from-center scroll scroll">Target</a>
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </nav>
+
+    </div>
+    <!--//Top-Bar-->
+    <!-- modal -->
+    <div class="modal about-modal w3-agileits fade" id="myModal2" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body login-page "><!-- login-page -->
+                    <div class="login-top sign-top">
+                        <div class="agileits-login">
+                            <h5>Login</h5>
+                            <form action="#" method="post">
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- //login-page -->
+        </div>
+    </div>
+    <!-- //modal -->
+    <!-- modal -->
+    <div class="modal about-modal w3-agileits fade" id="myModal3" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body login-page "><!-- login-page -->
+                    <div class="login-top sign-top">
+                        <div class="agileits-login">
+                            <h5>Register</h5>
+                            <form action="#" method="post">
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- //login-page -->
+        </div>
+    </div>
+    <!-- //modal -->
+    <!--banner-->
+    <!--Slider-->
+    <div class="w3l_banner_info">
+        <div class="col-md-7 slider">
+            <div class="callbacks_container">
+                <ul class="rslides" id="slider3">
+                    <li>
+                        <div class="slider_banner_info">
+                            <h4>东华超市存货系统</h4>
+                            <p>DHU's Supermarket Inventory System</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-5 banner-form-agileinfo">
+            <form action="tologin" method="post">
+                <input type="submit" class="hvr-shutter-in-vertical" value="立即登录">
+            </form>
+        </div>
+    </div>
+    <!--//Slider-->
+    <div class="clearfix"></div>
+</div>
+
+<!--//banner-->
+
+<script type="text/javascript" src="js/bootstrap-3.1.1.min.js"></script>
 </body>
 </html>

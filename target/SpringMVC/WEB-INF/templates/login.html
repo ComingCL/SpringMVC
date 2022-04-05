@@ -1,33 +1,164 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>首页</title>
+    <title>login</title>
+    <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+    function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- //for-mobile-apps -->
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all">
+    <!--web-fonts-->
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+    <!--//web-fonts-->
+    <!--//fonts-->
+    <style type="text/css">
+        a:link {color: yellow} /*未被访问的链接*/
+        a:visited {color: white} /* 已被访问过的链接*/
+        a:hover {color:red} /* 鼠标悬浮在上的链接*/
+        a:active {color: blue} /* 鼠标点中激活链接*/
+    </style>
+
 </head>
-<body bgcolor="#E3E3E3">
-<form th:action="login" method="post">
-    <table>
-        <caption>用户登录</caption>
-        <tr><td>登录名：</td>
-            <td><input type="text" name="username" size=”20”/></td>
-        </tr><tr><td>密码:</td>
-        <td><input type="password" name="password" size=”21”/></td></tr>
-    </table>
-    </table>
-    <input type="submit" value="登录"/>
-    <input type="reset" value="重置"/>
-</form>
-如果没注册单击<a th:href="@{/register}" target="_blank">这里</a>注册！<!--<a> 标签每出现一次，就会创建超链接,href用于设置或返回被链接资源的URL
-target="_blank"可以让超链接在新的窗口中打开，这样就不需要离开原来的页面了-->
+<body>
+<div class="banner-w3layouts" id="home">
+    <!--Top-Bar-->
+    <div class="header">
+        <nav class="navbar navbar-default">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <h1><a  href="index.html">DHU</a></h1>
+            </div>
 
-<!--&lt;!&ndash;这是thymeleaf的语法!! 检测到绝对路径的时候自动加上前缀&ndash;&gt;-->
-<!--<a th:href="@{/target}">访问目标页面target.html</a>-->
-<!--<a th:href="@{/testRequestMapping}">访问目标页面success.html</a>-->
-<!--<a th:href="@{/test}">访问目标页面success.html</a>-->
-<!--<form th:action="@{/test}" method="post">-->
-<!--    <input type="submit" value="测试RequestMapping注解的method属性&ndash;&gt;POST">-->
-<!--</form>-->
+            <!-- navbar-header -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a class="hvr-underline-from-center active scroll" href="index.html">Home</a></li>
+                    <li><a href="#features" class="hvr-underline-from-center scroll">Loging</a></li>
+                    <li><a href="#capabilities" class="hvr-underline-from-center scroll">Goods</a></li>
+                    <li><a href="#team" class="hvr-underline-from-center scroll scroll">Error</a></li>
+                    <li><a href="#gallery" class="hvr-underline-from-center scroll scroll">Success</a></li>
+                    <li><a href="#contact" class="hvr-underline-from-center scroll scroll">Target</a>
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </nav>
 
-<!--<a th:href="@{/testGetMapping}">测试GetMapping注解</a>-->
+    </div>
+    <!--//Top-Bar-->
+    <!-- modal -->
+    <div class="modal about-modal w3-agileits fade" id="myModal2" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body login-page "><!-- login-page -->
+                    <div class="login-top sign-top">
+                        <div class="agileits-login">
+                            <h5>Login</h5>
+                            <form action="#" method="post">
+                                <input type="email" class="email" name="Email" placeholder="Email" required=""/>
+                                <input type="password" class="password" name="Password" placeholder="Password" required=""/>
+                                <div class="wthree-text">
+                                    <ul>
+                                        <li>
+                                            <label class="anim">
+                                                <input type="checkbox" class="checkbox">
+                                                <span> Remember me ?</span>
+                                            </label>
+                                        </li>
+                                        <li> <a href="#">Forgot password?</a> </li>
+                                    </ul>
+                                    <div class="clearfix"> </div>
+                                </div>
+                                <div class="w3ls-submit">
+                                    <input type="submit" value="LOGIN">
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- //login-page -->
+        </div>
+    </div>
+    <!-- //modal -->
+    <!-- modal -->
+    <div class="modal about-modal w3-agileits fade" id="myModal3" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body login-page "><!-- login-page -->
+                    <div class="login-top sign-top">
+                        <div class="agileits-login">
+                            <h5>Register</h5>
+                            <form action="#" method="post">
+                                <input type="text" name="Username" placeholder="Username" required=""/>
+                                <input type="password" name="Password" placeholder="Password" required=""/>
+
+                                <div class="w3ls-submit">
+                                    <input type="submit" value="Register">
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- //login-page -->
+        </div>
+    </div>
+    <!-- //modal -->
+    <!--banner-->
+    <!--Slider-->
+    <div class="w3l_banner_info">
+        <div class="col-md-7 slider">
+            <div class="callbacks_container">
+                <ul class="rslides" id="slider3">
+                    <li>
+                        <div class="slider_banner_info">
+                            <h4>请登录</h4>
+                            <p>Please Log In</p>
+                        </div>
+
+                    </li>
+
+
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-5 banner-form-agileinfo">
+            <form action="#" method="post">
+                <input type="text" class="email" name="name" placeholder="用户名" required=""/>
+                <input type="email" class="password" name="email" placeholder="密码" required=""/>
+                <input type="submit" class="hvr-shutter-in-vertical" value="登录">
+            </form>
+            <div style="background:#ff0000;"><div style="display:inline;float:left;">
+                <a href="http://www.w3school.com.cn">注 册 账 号</a>
+            </div>
+                <div style="display:inline;float:right;">
+                    <a href="http://www.w3school.com.cn">忘 记 密 码</a>
+                </div>
+            </div>
+        </div>
+        <!--//Slider-->
+        <div class="clearfix"></div>
+    </div>
+
+
+
+    <script type="text/javascript" src="js/bootstrap-3.1.1.min.js"></script>
 </body>
 </html>

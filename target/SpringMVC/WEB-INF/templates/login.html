@@ -142,14 +142,14 @@
         <div class="col-md-5 banner-form-agileinfo">
             <form th:action="login" method="post">
                 <input type="text" class="email" name="username" placeholder="用户名" required=""/>
-                <input type="text" class="password" name="password" placeholder="密码" required=""/>
+                <input type="password" class="email" name="password" placeholder="密码" required=""/>
                 <input type="submit" class="hvr-shutter-in-vertical" value="登录">
             </form>
             <div style="background:#ff0000;"><div style="display:inline;float:left;">
                 <a th:href="@{/register}">注 册 账 号</a>
             </div>
                 <div style="display:inline;float:right;">
-                    <a th:href="@{/forget}">忘 记 密 码</a>
+                    <a th:href="@{/forget}">修 改 密 码</a>
                 </div>
             </div>
         </div>

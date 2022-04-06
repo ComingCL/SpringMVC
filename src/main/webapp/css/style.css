@@ -576,7 +576,7 @@ input.checkbox:checked:after {
 	 padding: 0 5em;
     margin-top: 9em;
 }
-.banner-form-agileinfo input[type="text"], .banner-form-agileinfo input[type="email"], .banner-form-agileinfo textarea, .form-control {
+.banner-form-agileinfo input[type="text"], .banner-form-agileinfo input[type="password"], .banner-form-agileinfo textarea, .form-control {
     border: none;
     width: 100%;
     background: rgba(167, 230, 252, 0.18);
@@ -1596,7 +1596,7 @@ a.a2:hover {
 	.banner-form-agileinfo input[type="submit"] {
 		padding: 10px 0px;
 	}
-	.banner-form-agileinfo input[type="text"], .banner-form-agileinfo input[type="email"], .banner-form-agileinfo textarea, .form-control {
+	.banner-form-agileinfo input[type="text"], .banner-form-agileinfo input[type="password"], .banner-form-agileinfo textarea, .form-control {
 		padding: 9px 15px;
 	}
 	.agileits-login input[type="submit"] {
@@ -2065,7 +2065,7 @@ a.a2:hover {
 	.slider {
 		padding-right: 0;
 	}
-	.banner-form-agileinfo input[type="text"], .banner-form-agileinfo input[type="email"], .banner-form-agileinfo textarea, .form-control {
+	.banner-form-agileinfo input[type="text"], .banner-form-agileinfo input[type="password"], .banner-form-agileinfo textarea, .form-control {
 		font-size: 13px;
 	}
 	.banner-w3layouts {
@@ -2117,7 +2117,7 @@ a.a2:hover {
 		width: 79%;
 		float:left
 	}
-	.banner-form-agileinfo input[type="text"], .banner-form-agileinfo input[type="email"], .banner-form-agileinfo textarea, .form-control {
+	.banner-form-agileinfo input[type="text"], .banner-form-agileinfo input[type="password"], .banner-form-agileinfo textarea, .form-control {
 		padding: 6px 15px;
 	}
 	.form-control {

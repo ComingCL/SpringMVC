@@ -29,9 +29,9 @@ public class LoginController {
     public String index(){
         return "index";
     }
-    @RequestMapping("/home")
+    @RequestMapping("/homepage")
     public String Home(){
-        return "index";
+        return "homepage";
     }
     @RequestMapping("/loginpage")
     public String Login(){

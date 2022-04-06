@@ -27,7 +27,7 @@ public class GoodsController {
     public String goods_add(){
         return "goods_add";
     }
-    @RequestMapping(value = "save", method = RequestMethod.POST)
+    @RequestMapping(value = "/Goods_save", method = RequestMethod.POST)
     public String addgoods(Goods goods) throws IOException {
         goodsDao.save(goods);
         return "redirect:/Goods";

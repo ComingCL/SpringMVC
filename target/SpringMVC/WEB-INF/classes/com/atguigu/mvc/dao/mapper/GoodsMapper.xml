@@ -8,9 +8,6 @@
     </select>
 <!--    Goods Insert_Goods();-->
     <select id="Insert_Goods" resultType="Goods">
-        insert into goods (id, Goodname, value, date_of_manufacture,
-                           quality_guarantee_period, supplier)
-                           values (null, #{Goodname}, #{value}, #{date_of_manufacture},
-                                   #{quality_guarantee_period}, #{supplier})
+        insert into goods (goodid, goodname, amount) values (null, #{goodname}, #{amount})
     </select>
 </mapper>

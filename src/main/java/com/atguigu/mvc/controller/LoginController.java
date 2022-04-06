@@ -27,11 +27,15 @@ public class LoginController {
 
     @RequestMapping("/")
     public String index(){
-        return "login";
+        return "index";
     }
-    @RequestMapping("home")
+    @RequestMapping("/home")
     public String Home(){
         return "index";
+    }
+    @RequestMapping("/loginpage")
+    public String Login(){
+        return "login";
     }
     @RequestMapping("/login")
 //    一般不用request获取, 因为springmvc已经获取过了

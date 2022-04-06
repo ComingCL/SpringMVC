@@ -17,7 +17,19 @@ public interface UserMapper {
      */
     User checkLogin(String username, String password);
 
-    User insertUser(String username, String password);
-
-
+    /**
+     * 检查用户是否已经存在
+     * @param username
+     * @return
+     */
+    User checkUser(String username);
+    /**
+     * 添加用户信息
+     * @param username
+     * @param password
+     * @return
+     * useGenterateKeys: 使用设置自增的主键 (没必要, 数据库已经是自增的了, 如果加上反倒报错)
+     * keyProperty：因为增删改有统一的返回值是受影响的行数，因此只能将获取的自增的主键放在传输的参 数user对象的某个属性中
+     */
+    int insertUser(String username, String password);
 }

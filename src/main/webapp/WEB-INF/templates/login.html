@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>login</title>
     <!-- for-mobile-apps -->
@@ -37,13 +37,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <h1><a  href="index.html">DHU</a></h1>
+                <h1><a  th:href="@{/}">DHU</a></h1>
             </div>
 
             <!-- navbar-header -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a class="hvr-underline-from-center active scroll" href="index.html">Home</a></li>
+                    <li><a class="hvr-underline-from-center active scroll" th:href="@{/home}">Home</a></li>
                     <li><a href="#features" class="hvr-underline-from-center scroll">Loging</a></li>
                     <li><a href="#capabilities" class="hvr-underline-from-center scroll">Goods</a></li>
                     <li><a href="#team" class="hvr-underline-from-center scroll scroll">Error</a></li>
@@ -78,7 +78,7 @@
                                                 <span> Remember me ?</span>
                                             </label>
                                         </li>
-                                        <li> <a href="#">Forgot password?</a> </li>
+                                        <li> <a th:href="@{forget}">Forgot password?</a> </li>
                                     </ul>
                                     <div class="clearfix"> </div>
                                 </div>
@@ -140,25 +140,25 @@
             </div>
         </div>
         <div class="col-md-5 banner-form-agileinfo">
-            <form action="#" method="post">
-                <input type="text" class="email" name="name" placeholder="用户名" required=""/>
-                <input type="email" class="password" name="email" placeholder="密码" required=""/>
+            <form th:action="login" method="post">
+                <input type="text" class="email" name="username" placeholder="用户名" required=""/>
+                <input type="text" class="password" name="password" placeholder="密码" required=""/>
                 <input type="submit" class="hvr-shutter-in-vertical" value="登录">
             </form>
             <div style="background:#ff0000;"><div style="display:inline;float:left;">
-                <a href="http://www.w3school.com.cn">注 册 账 号</a>
+                <a th:href="@{/register}">注 册 账 号</a>
             </div>
                 <div style="display:inline;float:right;">
-                    <a href="http://www.w3school.com.cn">忘 记 密 码</a>
+                    <a th:href="@{/forget}">忘 记 密 码</a>
                 </div>
             </div>
         </div>
         <!--//Slider-->
         <div class="clearfix"></div>
     </div>
-
-
+</div>
 
     <script type="text/javascript" src="js/bootstrap-3.1.1.min.js"></script>
+
 </body>
 </html>

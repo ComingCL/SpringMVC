@@ -28,8 +28,4 @@ public class GoodsDao {
         goods = mapper.get_goods_list();
         return goods;
     }
-
-//    public Goods Get(Integer id){
-//        return goods.get(id);
-//    }
 }

@@ -5,17 +5,14 @@
     <title>资料管理</title>
 </head>
 <body>
-<form action="goods_add" method="post">
+<form th:action="@{/goods_add}" method="post">
     <table border="1">
-        <caption>资料管理</caption>
-        <tr><th>商品号</th><th>商品名</th><th>商品价格</th><th>生产日期</th><th>保质期</th><th>供应商</th></tr>
+        <caption>商品管理</caption>
+        <tr><th>商品编号</th><th>商品名</th><th>库存数量</th></tr>
         <tr th:each="goods : ${goodsList}">
-            <td th:text="${goods.id}"></td>
-            <td th:text="${goods.Goodname}"></td>
-            <td th:text="${goods.value}"></td>
-            <td th:text="${goods.date_of_manufacture}"></td>
-            <td th:text="${goods.quality_guarantee_period}"></td>
-            <td th:text="${goods.Supplier}"></td>
+            <td th:text="${goods.goodid}"></td>
+            <td th:text="${goods.goodname}"></td>
+            <td th:text="${goods.amount}"></td>
         </tr>
     </table>
     <input type="submit" value="添加数据"/>

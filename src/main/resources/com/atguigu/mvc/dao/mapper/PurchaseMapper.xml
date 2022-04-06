@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.mvc.dao.mapper.PurchaseMapper">
+<!--List<Purchase> Get_Purchase_List();-->
+    <select id="Get_Purchase_List" resultType="Purchase">
+        select * from purchaseorder;
+    </select>
+
+<!--    Purchase Insert_Purchase(Purchase purchase);-->
+    <insert id="Insert_Purchase" keyProperty="purchaseid">
+        insert into purchaseorder (purchaseid, supplierid, goodid,
+                                   purchaseprice, purchasetime, amount, isreturn)
+                                   values (null, #{supplierid}, #{goodid}, #{purchaseprice},
+                                           #{purchasetime}, #{amount}, #{isreturn})
+    </insert>
+</mapper>

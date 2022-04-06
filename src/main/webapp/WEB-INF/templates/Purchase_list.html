@@ -5,16 +5,20 @@
     <title>Title</title>
 </head>
 <body>
-<form action="Purchase_add" method="post">
+<form th:action="Purchase_add" method="post">
     <table border="1">
         <caption>采购订单</caption>
-        <tr><th>订单号</th><th>订单名</th><th>时间</th><th>供货方</th><th>承办人</th><th>费用</th></tr>
-        <tr><td>id</td>
-            <td><%= purchase.getName() %></td>
-            <td><%= purchase.getTim() %></td>
-            <td><%= purchase.getSupply() %></td>
-            <td><%= purchase.getPerson() %></td>
-            <td><%= purchase.getValue() %></td></tr>
+        <tr><th>订单号</th><th>供应商编号</th><th>商品编号</th><th>商品价格</th><th>购买时间</th><th>费用</th><th>是否退货</th></th></tr>
+        <tr th:each="purchase : ${purchaseList}">
+            <td th:text="${purchase.purchaseid}"></td>
+            <td th:text="${purchase.supplierid}"></td>
+            <td th:text="${purchase.goodid}"></td>
+            <td th:text="${purchase.purchaseprice}"></td>
+            <td th:text="${purchase.purchasetime}"></td>
+            <td th:text="${purchase.amount}"></td>
+<!--            这个地方如果isreturn值为2, 那么这个值应该是否, 否则应该是 是-->
+            <td th:text="${purchase.isreturn}"></td>
+        </tr>
     </table>
     <input type="submit" value="添加数据"/>
 </form>

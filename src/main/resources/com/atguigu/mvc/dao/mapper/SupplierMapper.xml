@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.mvc.dao.mapper.SupplierMapper">
+<!--    List<Supplier> Get_Supplier_List();-->
+    <select id="Get_Supplier_List" resultType="Supplier">
+        select * from suppliers;
+    </select>
+
+<!--    int Insert_Supplier(Supplier supplier);-->
+    <insert id="Insert_Supplier" keyProperty="supplierid">
+        insert into purchaseorder (supplierid, suppliername, telephone, starttime, endtime)
+        values (null, #{supplierid}, #{suppliername}, #{telephone}, #{starttime}, #{endtime})
+    </insert>
+</mapper>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>账务管理</title>
+</head>
+<body>
+<button onclick="window.location.href = 'https://www.baidu.com/'">结账</button>
+<table border="1">
+    <caption>账务管理</caption>
+    <tr><th>商品编号</th><th>商品名</th><th>进货数</th><th>销售数量</th><th>库存数量</th></tr>
+    <tr th:each="goods : ${goodsList}">
+        <td th:text="${goods.goodid}"></td>
+        <td th:text="${goods.goodname}"></td>
+        <td th:text="${goods.amount}"></td>
+        <td></td>
+        <td></td>
+    </tr>
+</table>
+</body>
+</html>

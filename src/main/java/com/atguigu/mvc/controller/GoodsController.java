@@ -16,7 +16,7 @@ public class GoodsController {
     @Autowired
     private GoodsDao goodsDao;
 
-    @RequestMapping(value = "/Goods", method = RequestMethod.GET)
+    @RequestMapping(value = {"/Goods"}, method = RequestMethod.GET)
     public String getAllGoods(Model model) throws IOException {
         Collection<Goods> goodsList = goodsDao.getall();
         model.addAttribute("goodsList", goodsList);

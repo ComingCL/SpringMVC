@@ -37,6 +37,12 @@ public class LoginController {
     public String Login(){
         return "login";
     }
+    @RequestMapping("/stock")
+    public String stock(){ return "stock";}
+    @RequestMapping("/accounting_management")
+    public String accounting_management(){return "accounting_management";}
+    @RequestMapping("/system_management")
+    public String system_management(){return "system_management";}
     @RequestMapping("/login")
 //    一般不用request获取, 因为springmvc已经获取过了
     /*通过控制器的形参获取请求参数, 保证名字一样即可, 如果出现同名, 可以在控制器方法的形参位置设置字符串类型或字符串数组接收此参数

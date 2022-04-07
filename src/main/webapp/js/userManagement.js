@@ -10,6 +10,7 @@ $(function(){
         method: 'post',
         contentType: "application/x-www-form-urlencoded",
         url:"../index.php/admin/index/userManagement",
+        // url:"goods_add",
         height:tableHeight(),//高度调整
         toolbar: '#toolbar',
         striped: true, //是否显示行间隔色

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>销售记录</title>
+</head>
+<body>
+<form th:action="sales_add" method="post">
+    <table border="1">
+        <caption>销售订单</caption>
+        <tr><th>订单号</th><th>供应商编号</th><th>商品编号</th><th>商品价格</th><th>销售时间</th><th>费用</th><th>是否退货</th></th></tr>
+        <tr th:each="sales : ${salesList}">
+            <td th:text="${sales.salesid}"></td>
+            <td th:text="${sales.customerid}"></td>
+            <td th:text="${sales.goodid}"></td>
+            <td th:text="${sales.salesprice}"></td>
+            <td th:text="${sales.salestime}"></td>
+            <td th:text="${sales.amount}"></td>
+            <!--            这个地方如果isreturn值为2, 那么这个值应该是否, 否则应该是 是-->
+            <td th:text="${sales.isreturn}"></td>
+        </tr>
+    </table>
+    <input type="submit" value="添加数据"/>
+</form>
+</body>
+</html>

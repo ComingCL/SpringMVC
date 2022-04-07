@@ -1,21 +1,127 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html>
 <head>
     <meta charset="UTF-8">
-    <title>资料管理</title>
+    <title></title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/plugins/bootstrapValidator/bootstrapValidator.min.css"/>
+    <link rel="stylesheet" href="css/style.min.css" />
+    <style>
+        .back:hover{cursor: pointer;}
+        .fixed-table-toolbar .btn-group>.btn-group:last-child>.btn {
+            border-top-right-radius: 0px;
+            border-bottom-right-radius: 0px;
+        }
+        label{width:100px;}
+        .popup_de{
+            background-color:rgba(0,0,0,0.3);
+            width:100%;
+            height: 100%;
+            position:fixed;
+            z-index:999;
+            top:0;
+            left:0;
+            display:none;
+        }
+        .bbox{
+            display: -webkit-box;   /* 老版本语法: Safari, iOS, Android browser, older WebKit browsers. */
+            display: -moz-box;      /* 老版本语法: Firefox (buggy) */
+            display: -ms-flexbox;   /* 混合版本语法: IE 10 */
+            display: -webkit-flex;  /* 新版本语法: Chrome 21+ */
+            display: -moz-flex;
+            display: flex;          /* 新版本语法: Opera 12.1, Firefox 22+ */
+        }
+        .bbox.xycenter{
+            -moz-box-pack: center; /*Firefox*/
+            -webkit-box-pack: center; /*Safari,Opera,Chrome*/
+            box-pack: center;
+            -moz-justify-content: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -moz-box-align: center; /*Firefox*/
+            -webkit-box-align:center; /*Safari,Opera,Chrome*/
+            box-align: center;
+            -moz-align-items: center;
+            -webkit-align-items: center;
+            align-items:center;
+        }
+        .popup_de .popup_box{
+            width:300px;
+            height:150px;
+            font-family: '微软雅黑';
+            background-color: #fff;
+            border-radius:5px;
+            color:#333;
+        }
+        .popup_de .popup_btn{
+            display: inline-block;
+            width:100px;
+            height:30px;
+            border-radius: 3px;
+            border:1px solid #1ab394;
+            font-size:15px;
+            text-align: center;
+            line-height: 30px;
+            margin-right:15px;
+            cursor: pointer;
+        }
+        .popup_de .show_msg{
+            display: block;
+            width:100%;
+            text-align: center;
+            font-size:18px;
+            margin-top:40px;
+            margin-bottom: 20px;
+            padding:10px;
+        }
+        .popup_de .popup_close{
+            width:30px;
+            height:30px;
+            font-size:25px;
+            text-align: center;
+            display: inline-block;
+            cursor:pointer;
+            float: right;
+            border-top-right-radius: 5px;
+            line-height:30px;
+        }
+        .popup_de .popup_close:hover{
+            background-color: #1ab394;
+            color:#fff;
+        }
+        .popup_de .btn_submit{
+            background-color: #1ab394;
+            color:#fff;
+        }
+        .popup_de .btn_box{
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-<form th:action="@{/goods_add}" method="post">
-    <table border="1">
-        <caption>商品管理</caption>
-        <tr><th>商品编号</th><th>商品名</th><th>库存数量</th></tr>
-        <tr th:each="goods : ${goodsList}">
-            <td th:text="${goods.goodid}"></td>
-            <td th:text="${goods.goodname}"></td>
-            <td th:text="${goods.amount}"></td>
-        </tr>
-    </table>
-    <input type="submit" value="添加数据"/>
-</form>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        查询条件
+    </div>
+    <div class="panel-body form-group" style="margin-bottom:0px;">
+        <label class="col-sm-1 control-label" style="text-align: right; margin-top:5px">商品名：</label>
+        <div class="col-sm-2">
+            <input type="text" class="form-control" name="Name" id="search_name"/>
+        </div>
+        <div class="col-sm-1 col-sm-offset-4">
+            <button class="btn btn-primary" id="search_btn">查询</button>
+        </div>
+    </div>
+</div>
+<table id="mytab" class="table table-hover"></table>
 </body>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script src="js/plugins/bootstrap-table/bootstrap-table-zh-CN.min.js"></script>
+<script src="js/plugins/bootstrapValidator/bootstrapValidator.min.js"></script>
+<script src="js/userManagement.js"></script>
 </html>

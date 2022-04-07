@@ -25,13 +25,13 @@ public class LoginController {
         Start_ID = start_ID;
     }
 
-    @RequestMapping("/")
+    @RequestMapping(value = {"/", "index"})
     public String index(){
         return "index";
     }
     @RequestMapping("/homepage")
     public String Home(){
-        return "homepage";
+        return "choose_list";
     }
     @RequestMapping("/loginpage")
     public String Login(){

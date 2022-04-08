@@ -194,16 +194,16 @@ label{
     border-bottom: 2px solid rgb(223, 31, 58);
 }
 .agileits-login ::-webkit-input-placeholder {
-   color: #fff; 
+   color: #000;
 } 
 .agileits-login :-moz-placeholder { /* Firefox 18- */
-   color: #fff;
+   color: #000;
 } 
 .agileits-login ::-moz-placeholder {  /* Firefox 19+ */
-   color: #fff; 
+   color: #000;
 } 
 .agileits-login :-ms-input-placeholder {  
-   color: #fff; 
+   color: #000;
 }
 /*-- checkbox --*/
 .agileits-login label {
@@ -710,7 +710,17 @@ a.navbar-brand span {
 .banner-w3layouts {
     position:relative;
 	background:url('../images/bann5.jpg')no-repeat 0px 0px;
-	min-height: 750px;
+	min-height: 800px;
+	-webkit-background-size:cover;
+	-o-background-size:cover;
+	-moz-background-size:cover;
+	-ms-background-size:cover;
+	background-size:cover;
+}
+.banner-w2layouts {
+    position:relative;
+	background:url('../images/bann6.jpg')no-repeat 0px 0px;
+	height: 30px;
 	-webkit-background-size:cover;
 	-o-background-size:cover;
 	-moz-background-size:cover;
@@ -982,7 +992,8 @@ h4.two {
     width: 100%;
 }
 .team-img {
-    position: relative;
+	position: relative;
+
 }
 .team-img:hover .overlay {
     cursor: pointer;
@@ -999,25 +1010,25 @@ h4.two {
     line-height: 24px;
 }
 .overlay {
-        background: rgba(1, 188, 250, 0.52);
-    text-align: center;
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    color: #fff;
-    opacity: 0;
-    filter: alpha(opacity=0);
-    -webkit-transition: all 450ms ease-out 0s;
-    -moz-transition: all 450ms ease-out 0s;
-    -o-transition: all 450ms ease-out 0s;
-    transition: all 450ms ease-out 0s;
-    -webkit-transform: rotateY(180deg) scale(0.5,0.5);
-    -moz-transform: rotateY(180deg) scale(0.5,0.5);
-    -ms-transform: rotateY(180deg) scale(0.5,0.5);
-    -o-transform: rotateY(180deg) scale(0.5,0.5);
-    transform: rotateY(180deg) scale(0.5,0.5);
+	background: rgba(1, 188, 250, 0.52);
+	text-align: center;
+	position: absolute;
+	left: -14px;
+	top: -8px;
+	width: 100%;
+	height: 100%;
+	color: #fff;
+	opacity: 0;
+	filter: alpha(opacity=0);
+	-webkit-transition: all 450ms ease-out 0s;
+	-moz-transition: all 450ms ease-out 0s;
+	-o-transition: all 450ms ease-out 0s;
+	transition: all 450ms ease-out 0s;
+	-webkit-transform: rotateY(180deg) scale(0.5,0.5);
+	-moz-transform: rotateY(180deg) scale(0.5,0.5);
+	-ms-transform: rotateY(180deg) scale(0.5,0.5);
+	-o-transform: rotateY(180deg) scale(0.5,0.5);
+	transform: rotateY(180deg) scale(0.5,0.5);
 }
 .team-grid h5 {
     font-size: 1.4em;
@@ -1304,19 +1315,19 @@ a.a2:hover {
 /*--placeholder-color--*/
 
 ::-webkit-input-placeholder{
-	color:#fff!important;
+	color: #000000 !important;
 }
 
 :-moz-placeholder { /* Firefox 18- */
-   color: #fff!important; 
+   color: #000000 !important;
 }
 
 ::-moz-placeholder {  /* Firefox 19+ */
-   color: #fff!important;  
+   color: #000000 !important;
 }
 
 :-ms-input-placeholder {  
-   color: #fff!important;  
+   color: #000000 !important;
 }
 /*--//placeholder-color--*/
 /*--copy-right--*/

@@ -13,5 +13,5 @@ public interface CustomerMapper {
     void Delete_Customers(@Param("id") Integer id);
 
     void Update_Customer();
-    Goods getCustomersById();
+    Goods getCustomersByName(@Param("customername") String customername);
 }

@@ -40,8 +40,9 @@ public class MyBatistest {
     public void testGoods() throws IOException {
         SqlSession sqlSession = SqlSessionUtils.getSqlSession();
         GoodsMapper mapper = sqlSession.getMapper(GoodsMapper.class);
-        List<Goods> list = mapper.get_goods_list();
-        list.forEach(user -> System.out.println(user));
+//        System.out.println(mapper.getGoodsByName("牛").getGoodname());
+//        List<Goods> list = mapper.get_goods_list();
+//        list.forEach(user -> System.out.println(user));
     }
 
     @Test

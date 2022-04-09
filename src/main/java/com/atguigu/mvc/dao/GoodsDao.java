@@ -31,11 +31,14 @@ public class GoodsDao {
         Integer amount = mapper.Get_Amount();
         System.out.println(amount);
         request.getSession().setAttribute("amount", amount);
-
         return goods;
     }
     public void delete(Integer id) throws IOException{
         GoodsMapper mapper = sqlSession.getMapper(GoodsMapper.class);
         mapper.Delete_Goods(id);
+    }
+    public Goods Serach(String goodname)throws IOException{
+        GoodsMapper mapper = sqlSession.getMapper(GoodsMapper.class);
+        return mapper.getGoodsByName(goodname);
     }
 }

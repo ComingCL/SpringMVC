@@ -23,5 +23,5 @@ public interface GoodsMapper {
     /**
      * 根据名字查询商品信息
      */
-    Goods getGoodsById();
+    Goods getGoodsByName(@Param("goodname") String goodname);
 }

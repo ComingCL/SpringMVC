@@ -15,6 +15,8 @@
     <!--web-fonts-->
     <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
     <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
     <style>
 /* 容器 <div> - 需要定位下拉内容 */
 .dropdown {
@@ -52,6 +54,52 @@
     background-color: #3e8e41;
 }
 </style>
+
+    <script>
+        //删除商品
+        window.delete_Goods= function() {
+            var delete_id = document.getElementById("Goods_id").value;
+            if (delete_id<=0) {
+                alert("商品id必须是正数哦");
+            } else {
+                $(".delSure").click(function () {
+                    $.ajax({
+                        url: "goods_delete?id="+delete_id,
+                        type: 'POST',
+                        success: function (data) {
+                            $("body").html(data);
+                        }
+                    });
+                });
+            }
+        }
+        //增加商品
+        window.add_Goods= function() {
+            var add_name = document.getElementById("Goods_name").value;
+            var add_amount= document.getElementById("Goods_amount").value;
+            $.ajax({
+                url: "Goods_save",
+                type: 'POST',
+                data:{"goodname":add_name,"amount":add_amount},
+                success: function (data) {
+                    $("body").html(data);
+                }
+            });
+        }
+        //修改商品
+        window.modify_Goods= function() {
+            var add_id= document.getElementById("Goods_id").value;//getElementById用于根据input标签的id值获得对应input标签中的值
+            var add_name = document.getElementById("Goods_name").value;
+            $.ajax({
+                url: "goods_add",//向Controller中的@RequestMapping(value = "/goods_add")对应的方法传参数
+                type: 'POST',
+                data:{"id":add_id,"goodname":add_name},//参数的名字叫id和goodname对应于GoodsMapper.xml中的参数名
+                success: function (data) {
+                    $("body").html(data);
+                }
+            });
+        }
+    </script>
 </head>
 
 <body bgcolor="black">
@@ -72,7 +120,7 @@
 					<!-- navbar-header -->
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a class="hvr-underline-from-center active scroll" th:href="homepage">主页</a></li>
+                            <li><a class="hvr-underline-from-center active scroll" href="#">主页</a></li>
                             <li><a th:href="Goods" class="hvr-underline-from-center scroll">资料管理</a></li>
                             <li><a th:href="Purchase" class="hvr-underline-from-center scroll">采购管理</a></li>
                             <li><a th:href="Sales" class="hvr-underline-from-center scroll scroll">销售管理</a></li>
@@ -87,43 +135,118 @@
 </div>
 <form class="form-inline" >
     <div class="form-group" style="display:inline">
-        <label style="float: left; margin-top:0.15cm; margin-left:0.1cm" for="exampleInputName2">商品名：</label>
-        <input type="text" style="float: left" class="form-control" id="exampleInputName2" name ="goods_name" placeholder="请在这里输入商品名">
+        <label style="float: left; margin-top:0.15cm; margin-left:0.1cm" for="Goods_id">商品编号：</label>
+        <input type="text" style="float: left" class="form-control" id="Goods_id" placeholder="请在这里输入商品编号">
     </div>
     <div class="form-group" style="display:inline">
-        <label style="float: left; margin-top:0.15cm; margin-left:0.1cm" for="exampleInputEmail2">数量:</label>
-        <input type="text" style="float:left" class="form-control" id="exampleInputEmail2" name ="goods_amount" placeholder="请在这里输入商品数量">
+        <label style="float: left; margin-top:0.15cm; margin-left:0.1cm" for="Goods_name">商品名:</label>
+        <input type="text" style="float:left" class="form-control" id="Goods_name" placeholder="请在这里输入商品名">
+    </div>
+    <div class="form-group" style="display:inline">
+        <label style="float: left; margin-top:0.15cm; margin-left:0.1cm" for="Goods_amount">数量:</label>
+        <input type="text" style="float:left" class="form-control" id="Goods_amount" placeholder="请在这里输入商品数量">
     </div>
     <div style="display:inline">
         <button onClick="window.location.href = 'https://www.baidu.com/'" class="btn btn-default" style="float:left;margin-top:0.05cm"><span class="glyphicon glyphicon-search"></span> 查询</button>
-        <button onClick="window.location.href = 'https://www.baidu.com/'" class="btn btn-default" style="float:right"><span class="glyphicon glyphicon-plus"></span> 增加</button>
-        <button onClick="window.location.href = 'https://www.baidu.com/'" class="btn btn-default" style="float:right"><span class="glyphicon glyphicon-remove"></span> 刪除</button>
-        <button onClick="window.location.href = 'https://www.baidu.com/'" class="btn btn-default" style="float:right"><span class="glyphicon glyphicon-pencil"></span> 修改</button>
+        <a  class="btn btn-default btn-sm" style="float:right" data-bs-toggle="modal" data-bs-target="#add_goods"><span class="glyphicon glyphicon-plus"></span> 增加</a>
+        <a  class="btn btn-default btn-sm" style="float:right" data-bs-toggle="modal" data-bs-target="#delete_goods"><span class="glyphicon glyphicon-remove"></span> 删除</a>
+        <a  class="btn btn-default btn-sm" style="float:right" data-bs-toggle="modal" data-bs-target="#modify_goods"><span class="glyphicon glyphicon-pencil"></span> 修改</a>
         <div class="dropdown" style="float:right">
             <button class="btn btn-default" style="float:right"><span class="glyphicon glyphicon-th"></span></button>
                 <div class="dropdown-content">
-                <a th:href="Goods">商品资料</a>
-                <a th:href="supplier">供货商资料</a>
-                <a th:href="Customer">客户资料</a>
+                <a href="#">资料管理</a>
+                <a href="#">货物管理</a>
+                <a href="#">仓库管理</a>
                 </div>
         </div>
     </div>
+    <br>
 </form>
 <br><br>
-<form>
+
+<form style="display:inline">
     <div class="table-responsive">
         <table border="1" class="table table-hover">
             <caption>商品管理</caption>
             <tr><th>商品编号</th><th>商品名</th><th>库存数量</th></tr>
-
             <tr th:each="goods : ${goodsList}">
                 <td th:text="${goods.goodid}"></td>
                 <td th:text="${goods.goodname}"></td>
                 <td th:text="${goods.amount}"></td>
+                <td>
+                </td>
             </tr>
         </table>
     </div>
 </form>
+<!-- 删除商品模态框 -->
+<div class="modal" id="delete_goods">
+    <div class="modal-dialog">
+        <div class="modal-content">
 
+            <!-- 模态标题 -->
+            <div class="modal-header">
+                <h4 class="modal-title">删除</h4>
+            </div>
+
+            <!-- 模态主体 -->
+            <div class="modal-body">
+                <strong>你确定要删除吗？</strong>
+            </div>
+
+            <!-- 模态页脚 -->
+            <div class="modal-footer">
+                <button onclick="return delete_Goods()" type="button" class="delSure btn btn-info" data-dismiss="modal">确定</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 增加商品模态框 -->
+<div class="modal" id="add_goods">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- 模态标题 -->
+            <div class="modal-header">
+                <h4 class="modal-title">增加</h4>
+            </div>
+
+            <!-- 模态主体 -->
+            <div class="modal-body">
+                <strong>你确定要增加吗？</strong>
+            </div>
+
+            <!-- 模态页脚 -->
+            <div class="modal-footer">
+                <button onclick="return add_Goods()" type="button" class="delSure btn btn-info" data-dismiss="modal">确定</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 修改商品模态框 -->
+<div class="modal" id="modify_goods">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- 模态标题 -->
+            <div class="modal-header">
+                <h4 class="modal-title">修改</h4>
+            </div>
+
+            <!-- 模态主体 -->
+            <div class="modal-body">
+                <strong>你确定要修改吗？</strong>
+            </div>
+
+            <!-- 模态页脚 -->
+            <div class="modal-footer">
+                <button onclick="return modify_Goods()" type="button" class="delSure btn btn-info" data-dismiss="modal">确定</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

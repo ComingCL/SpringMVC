@@ -15,4 +15,10 @@
                                    values (null, #{supplierid}, #{goodid}, #{purchaseprice},
                                            #{purchasetime}, #{amount}, #{isreturn})
     </insert>
+
+    <!--    void Delete_Purchase(Integer id);-->
+    <delete id="Delete_Purchase">
+        delete from purchaseorder where purchaseid = #{id};
+        alter table purchaseorder auto_increment 1;
+    </delete>
 </mapper>

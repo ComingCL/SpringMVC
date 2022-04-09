@@ -28,4 +28,8 @@ public class GoodsDao {
         goods = mapper.get_goods_list();
         return goods;
     }
+    public void delete(Integer id) throws IOException{
+        GoodsMapper mapper = sqlSession.getMapper(GoodsMapper.class);
+        mapper.Delete_Goods(id);
+    }
 }

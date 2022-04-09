@@ -37,7 +37,7 @@ a:active {color: blue} /* 鼠标点中激活链接*/
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<h1><a  href="index.html">DHU</a></h1>
+						<h1><a  th:href="index">DHU</a></h1>
 					</div>
 
 					<!-- navbar-header -->
@@ -46,10 +46,10 @@ a:active {color: blue} /* 鼠标点中激活链接*/
 							<li><a class="hvr-underline-from-center active scroll" th:href="homepage">主页</a></li>
 							<li><a th:href="Goods" class="hvr-underline-from-center scroll">资料管理</a></li>
 							<li><a th:href="Purchase" class="hvr-underline-from-center scroll">采购管理</a></li>
-							<li><a href="" class="hvr-underline-from-center scroll scroll">销售管理</a></li>
-							<li><a href="#gallery" class="hvr-underline-from-center scroll scroll">库存管理</a></li>
-							<li><a href="#contact" class="hvr-underline-from-center scroll scroll">账务管理</a></li>
-							<li><a href="#contact" class="hvr-underline-from-center scroll scroll">系统管理</a></li>
+							<li><a th:href="Sales" class="hvr-underline-from-center scroll scroll">销售管理</a></li>
+							<li><a th:href="stock" class="hvr-underline-from-center scroll scroll">库存管理</a></li>
+							<li><a th:href="accounting_management" class="hvr-underline-from-center scroll scroll">账务管理</a></li>
+							<li><a th:href="system_management" class="hvr-underline-from-center scroll scroll">系统管理</a></li>
 						</ul>
 					</div>
 					<div class="clearfix"> </div>	
@@ -103,15 +103,16 @@ a:active {color: blue} /* 鼠标点中激活链接*/
 					</div>
 				</div>
 				<div class="col-md-5 banner-form-agileinfo">
-					<form action="#" method="post">
-						<input type="text" class="email" name="name" placeholder="用户名" required=""/>
-						<input type="password" class="password" name="email" placeholder="密码" required=""/>
+					<form th:action="register_check" method="post">
+						<input type="text" class="email" name="username" placeholder="用户名" required=""/>
+						<input type="password" class="password" name="password" placeholder="密码" required=""/>
                         <input type="password" class="password" name="email" placeholder="确认密码" required=""/>
 						<input type="submit" class="hvr-shutter-in-vertical" value="立即注册">  	
 					</form>
                     <div style="background:#ff0000;"><div style="display:inline;float:left;">
+						<a th:href="@{/loginpage}">返 回 登 录</a>
                     </div><div style="display:inline;float:right;">
-                    <a href="http://www.w3school.com.cn">修 改 密 码</a>
+                    <a th:href="@{/change_password}">修 改 密 码</a>
                     </div>
 				</div>
 		</div>

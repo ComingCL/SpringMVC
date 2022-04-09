@@ -27,4 +27,15 @@
             </bean>
         </property>
     </bean>
+
+<!--    配置拦截器-->
+<!--    这种方式所有请求都会被拦截-->
+<!--
+    <mvc:interceptors>
+        <bean class="com.atguigu.mvc.interceptors.FirstInterceptor">
+
+        </bean>
+    </mvc:interceptors>
+    或者<ref bean="firstInterceptor"></ref>
+-->
 </beans>

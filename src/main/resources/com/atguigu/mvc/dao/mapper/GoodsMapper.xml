@@ -3,11 +3,31 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.atguigu.mvc.dao.mapper.GoodsMapper">
-    <select id="get_goods_list" resultType="Goods">
+
+    <select id="get_goods_list" resultType="com.atguigu.mvc.dao.pojo.Goods">
         select * from goods;
     </select>
-<!--    Goods Insert_Goods();-->
-    <select id="Insert_Goods" resultType="Goods">
+<!--    Goods Insert_Goods(Goods);-->
+    <select id="Insert_Goods" resultType="com.atguigu.mvc.dao.pojo.Goods">
         insert into goods (goodid, goodname, amount) values (null, #{goodname}, #{amount})
     </select>
+<!--    void Update_Goods(Integer id);-->
+    <update id="Update_Goods">
+        update goods set goodname = '牛奶' where goodid = 4
+    </update>
+<!--    void Delete_Goods(Integer id);-->
+    <delete id="Delete_Goods">
+        delete from goods where goodid = #{id};
+        alter table goods auto_increment 1;
+    </delete>
+<!--    Goods getGoodsById();-->
+<!--
+    查询功能的标签必须设置resultType或者resultMap
+    resultType: 默认的映射关系
+    resultMap: 设置自定义的映射关系
+-->
+    <select id="getGoodsById" resultType="com.atguigu.mvc.dao.pojo.Goods">
+        select * from goods where goodid = 3
+    </select>
+
 </mapper>

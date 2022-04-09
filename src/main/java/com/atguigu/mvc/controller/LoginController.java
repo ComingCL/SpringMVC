@@ -5,12 +5,14 @@ import com.atguigu.mvc.dao.pojo.User;
 import com.atguigu.mvc.utils.SqlSessionUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.ModelAndViewDefiningException;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @Controller
@@ -51,15 +53,18 @@ public class LoginController {
 //            此处可重点关注RequestParam的用法
             @RequestParam(value = "username", required = false, defaultValue = "default")
                     String username,// 请求参数是username也可以
-            String password) throws IOException {
+            String password, HttpServletRequest request) throws IOException {
 //        System.out.println("username: " + username + "password: " + password);
         ModelAndView mav = new ModelAndView();
 
         SqlSession sqlSession = SqlSessionUtils.getSqlSession();
         UserMapper mapper = sqlSession.getMapper(UserMapper.class);
         User user = mapper.checkLogin(username, password);
-        System.out.println(user);
-        if(user != null) mav.setViewName("index");
+        System.out.println("111111111111");
+        if(user != null){
+            request.getSession().setAttribute("User", user);
+            mav.setViewName("choose_list");
+        }
         else mav.setViewName("error");
         return mav;
     }

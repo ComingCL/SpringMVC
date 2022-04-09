@@ -150,7 +150,7 @@
         <button onClick="window.location.href = 'https://www.baidu.com/'" class="btn btn-default" style="float:left;margin-top:0.05cm"><span class="glyphicon glyphicon-search"></span> 查询</button>
         <a  class="btn btn-default btn-sm" style="float:right" data-bs-toggle="modal" data-bs-target="#add_goods"><span class="glyphicon glyphicon-plus"></span> 增加</a>
         <a  class="btn btn-default btn-sm" style="float:right" data-bs-toggle="modal" data-bs-target="#delete_goods"><span class="glyphicon glyphicon-remove"></span> 删除</a>
-        <a onclick="return modify_Goods()" class="btn btn-default btn-sm" style="float:right" data-bs-toggle="modal" data-bs-target="#modify_goods"><span class="glyphicon glyphicon-pencil"></span> 修改</a>
+        <a  class="btn btn-default btn-sm" style="float:right" data-bs-toggle="modal" data-bs-target="#modify_goods"><span class="glyphicon glyphicon-pencil"></span> 修改</a>
         <div class="dropdown" style="float:right">
             <button class="btn btn-default" style="float:right"><span class="glyphicon glyphicon-th"></span></button>
                 <div class="dropdown-content">
@@ -242,7 +242,7 @@
 
             <!-- 模态页脚 -->
             <div class="modal-footer">
-                <button type="button" class="delSure btn btn-info" data-dismiss="modal">确定</button>
+                <button onclick="return modify_Goods()" type="button" class="delSure btn btn-info" data-dismiss="modal">确定</button>
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">取消</button>
             </div>
         </div>

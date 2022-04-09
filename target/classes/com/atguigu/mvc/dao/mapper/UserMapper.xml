@@ -25,4 +25,9 @@
     <select id="checkUser" resultType="User">
         select * from usertable where username = #{arg0}
     </select>
+
+    <!--    void change_password(String username, String password);-->
+    <update id="change_password">
+        update usertable set password = #{password} where username = #{username}
+    </update>
 </mapper>

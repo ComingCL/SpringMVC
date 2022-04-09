@@ -76,13 +76,13 @@
             <!-- navbar-header -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a class="hvr-underline-from-center active scroll" href="#">主页</a></li>
-                    <li><a href="#" class="hvr-underline-from-center scroll">资料管理</a></li>
-                    <li><a href="#" class="hvr-underline-from-center scroll">采购管理</a></li>
-                    <li><a href="#" class="hvr-underline-from-center scroll scroll">销售管理</a></li>
-                    <li><a href="#" class="hvr-underline-from-center scroll scroll">库存管理</a></li>
-                    <li><a href="#" class="hvr-underline-from-center scroll scroll">账务管理</a></li>
-                    <li><a href="#" class="hvr-underline-from-center scroll scroll">系统管理</a>
+                    <li><a class="hvr-underline-from-center active scroll" th:href="homepage">主页</a></li>
+                    <li><a th:href="Goods" class="hvr-underline-from-center scroll">资料管理</a></li>
+                    <li><a th:href="Purchase" class="hvr-underline-from-center scroll">采购管理</a></li>
+                    <li><a th:href="Sales" class="hvr-underline-from-center scroll scroll">销售管理</a></li>
+                    <li><a th:href="stock" class="hvr-underline-from-center scroll scroll">库存管理</a></li>
+                    <li><a th:href="accounting_management" class="hvr-underline-from-center scroll scroll">账务管理</a></li>
+                    <li><a th:href="system_management" class="hvr-underline-from-center scroll scroll">系统管理</a></li>
                 </ul>
             </div>
             <div class="clearfix"> </div>
@@ -210,7 +210,7 @@
                         <button type="button" class="btn btn-default" data-dismiss="modal">关闭
                         </button>
                         <button type="button" class="btn btn-primary">
-                            確認修改
+                            确认修改
                         </button>
                     </div>
                 </div><!-- /.modal-content -->
@@ -219,23 +219,25 @@
         <div class="dropdown" style="float:right">
             <button class="btn btn-default" style="float:right"><span class="glyphicon glyphicon-th"></span></button>
             <div class="dropdown-content">
-                <a href="#">商品资料管理</a>
-                <a href="#">客戶资料管理</a>
-                <a href="#">供貨商资料管理</a>
-                <a href="#">合同維護</a>
+                <a th:href="Goods">商品资料</a>
+                <a th:href="supplier">供货商资料</a>
+                <a th:href="Customer">客户资料</a>
             </div>
         </div>
+    </div>
 </form>
 <br><br>
-<form th:action="@{/goods_add}" method="post">
+<form>
     <div class="table-responsive">
         <table border="1" class="table table-hover">
-            <caption>商品管理</caption>
-            <tr><th>商品编号</th><th>商品名</th><th>库存数量</th></tr>
-            <tr th:each="goods : ${goodsList}">
-                <td th:text="${goods.goodid}"></td>
-                <td th:text="${goods.goodname}"></td>
-                <td th:text="${goods.amount}"></td>
+            <caption>客户资料</caption>
+            <tr><th>客户编号</th><th>客户名</th><th>电话号码</th><th>开始时间</th><th>结束时间</th></tr>
+            <tr th:each="customers : ${customersList}">
+                <td th:text="${customers.customerid}"></td>
+                <td th:text="${customers.customername}"></td>
+                <td th:text="${customers.telephone}"></td>
+                <td th:text="${customers.starttime}"></td>
+                <td th:text="${customers.endtime}"></td>
             </tr>
         </table>
     </div>

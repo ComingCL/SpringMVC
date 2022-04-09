@@ -6,6 +6,8 @@ import com.atguigu.mvc.utils.SqlSessionUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.*;
 
@@ -21,11 +23,15 @@ public class GoodsDao {
         mapper.Insert_Goods(goods);
     }
 
-    public Collection<Goods> getall() throws IOException {
+    public Collection<Goods> getall(HttpServletRequest request) throws IOException {
 //        先这样写着吧, 必须要重新获取
         sqlSession = SqlSessionUtils.getSqlSession();
         GoodsMapper mapper = sqlSession.getMapper(GoodsMapper.class);
         goods = mapper.get_goods_list();
+        Integer amount = mapper.Get_Amount();
+        System.out.println(amount);
+        request.getSession().setAttribute("amount", amount);
+
         return goods;
     }
     public void delete(Integer id) throws IOException{

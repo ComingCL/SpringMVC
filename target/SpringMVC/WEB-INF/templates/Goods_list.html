@@ -102,19 +102,20 @@
         <div class="dropdown" style="float:right">
             <button class="btn btn-default" style="float:right"><span class="glyphicon glyphicon-th"></span></button>
                 <div class="dropdown-content">
-                <a href="#">资料管理</a>
-                <a href="#">货物管理</a>
-                <a href="#">仓库管理</a>
+                <a th:href="Goods">商品资料</a>
+                <a th:href="supplier">供货商资料</a>
+                <a th:href="Customer">客户资料</a>
                 </div>
         </div>
     </div>
 </form>
 <br><br>
-<form th:action="@{/goods_add}" method="post">
+<form>
     <div class="table-responsive">
         <table border="1" class="table table-hover">
             <caption>商品管理</caption>
             <tr><th>商品编号</th><th>商品名</th><th>库存数量</th></tr>
+
             <tr th:each="goods : ${goodsList}">
                 <td th:text="${goods.goodid}"></td>
                 <td th:text="${goods.goodname}"></td>

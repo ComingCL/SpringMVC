@@ -19,7 +19,7 @@ public class SupplierController {
     public String supplier(Model model) throws IOException {
         Collection<Supplier> supplierList = supplierDao.getall();
         model.addAttribute("supplierList", supplierList);
-        return "supplier_list";
+        return "Supplier_list";
     }
     @RequestMapping(value = "/supplier_add", method = RequestMethod.POST)
     public String supplier_add(){

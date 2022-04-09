@@ -1,6 +1,7 @@
 package com.atguigu.mvc.dao.mapper;
 
 import com.atguigu.mvc.dao.pojo.User;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -32,4 +33,6 @@ public interface UserMapper {
      * keyProperty：因为增删改有统一的返回值是受影响的行数，因此只能将获取的自增的主键放在传输的参 数user对象的某个属性中
      */
     int insertUser(String username, String password);
+
+    void change_password(@Param("username") String username, @Param("password") String password);
 }

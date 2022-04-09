@@ -1,9 +1,11 @@
 package com.atguigu.mvc.controller;
+import com.atguigu.mvc.dao.UserDao;
 import com.atguigu.mvc.dao.mapper.UserMapper;
 
 import com.atguigu.mvc.dao.pojo.User;
 import com.atguigu.mvc.utils.SqlSessionUtils;
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +19,10 @@ import java.io.IOException;
 
 @Controller
 public class LoginController {
+
+    @Autowired
+    private UserDao userDao;
+
     private int Start_ID = 0;
 
     public int getStart_ID() {
@@ -39,12 +45,15 @@ public class LoginController {
     public String Login(){
         return "login";
     }
-    @RequestMapping("/stock")
-    public String stock(){ return "stock";}
     @RequestMapping("/accounting_management")
     public String accounting_management(){return "accounting_management";}
     @RequestMapping("/system_management")
-    public String system_management(){return "system_management";}
+    public String system_management(HttpServletRequest request){
+        HttpSession session = request.getSession();
+        User user = (User)session.getAttribute("User");
+        if(user == null) return "login";
+        return "system_management";
+    }
     @RequestMapping("/login")
 //    一般不用request获取, 因为springmvc已经获取过了
     /*通过控制器的形参获取请求参数, 保证名字一样即可, 如果出现同名, 可以在控制器方法的形参位置设置字符串类型或字符串数组接收此参数
@@ -60,9 +69,9 @@ public class LoginController {
         SqlSession sqlSession = SqlSessionUtils.getSqlSession();
         UserMapper mapper = sqlSession.getMapper(UserMapper.class);
         User user = mapper.checkLogin(username, password);
-        System.out.println("111111111111");
         if(user != null){
             request.getSession().setAttribute("User", user);
+            request.getSession().setAttribute("totamount", 500);
             mav.setViewName("choose_list");
         }
         else mav.setViewName("error");
@@ -99,5 +108,18 @@ public class LoginController {
     @RequestMapping("/forget")
     public String Forget(){
         return "forget";
+    }
+
+    @RequestMapping("/logout")
+    public String logout(HttpServletRequest request){
+        request.getSession().setAttribute("User", null);
+        return "login";
+    }
+
+    @RequestMapping("change_password")
+    public String change_password( String password, HttpServletRequest request) throws IOException {
+        userDao.change_password(((User) request.getSession().getAttribute("User")).getUsername(), password);
+        request.getSession().setAttribute("User", null);
+        return "login";
     }
 }

@@ -76,13 +76,13 @@
             <!-- navbar-header -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a class="hvr-underline-from-center active scroll" href="#">主页</a></li>
-                    <li><a href="#" class="hvr-underline-from-center scroll">资料管理</a></li>
-                    <li><a href="#" class="hvr-underline-from-center scroll">采购管理</a></li>
-                    <li><a href="#" class="hvr-underline-from-center scroll scroll">销售管理</a></li>
-                    <li><a href="#" class="hvr-underline-from-center scroll scroll">库存管理</a></li>
-                    <li><a href="#" class="hvr-underline-from-center scroll scroll">账务管理</a></li>
-                    <li><a href="#" class="hvr-underline-from-center scroll scroll">系统管理</a>
+                    <li><a class="hvr-underline-from-center active scroll" th:href="homepage">主页</a></li>
+                    <li><a th:href="Goods" class="hvr-underline-from-center scroll">資料管理</a></li>
+                    <li><a th:href="Purchase" class="hvr-underline-from-center scroll">采购管理</a></li>
+                    <li><a th:href="Sales" class="hvr-underline-from-center scroll scroll">销售管理</a></li>
+                    <li><a th:href="stock" class="hvr-underline-from-center scroll scroll">库存管理</a></li>
+                    <li><a th:href="accounting_management" class="hvr-underline-from-center scroll scroll">账务管理</a></li>
+                    <li><a th:href="system_management" class="hvr-underline-from-center scroll scroll">系统管理</a></li>
                 </ul>
             </div>
             <div class="clearfix"> </div>
@@ -106,13 +106,13 @@
                             &times;
                         </button>
                         <h4 class="modal-title">
-                            增加供應商
+                            增加供应商
                         </h4>
                     </div>
                     <div class="modal-body">
                         <div>
-                            <label style="float: left; margin-top:0.15cm; margin-left:0.1cm" for="AddInputName1">供應商名：</label>
-                            <input type="text" style="margin-left: 16px; color:#000000" class="form-control" id="AddInputName1" name ="add_supplier_name" placeholder="请在这里输入供應商名">
+                            <label style="float: left; margin-top:0.15cm; margin-left:0.1cm" for="AddInputName1">供应商名：</label>
+                            <input type="text" style="margin-left: 16px; color:#000000" class="form-control" id="AddInputName1" name ="add_supplier_name" placeholder="请输入供应商名">
                         </div>
                         <br>
                         <div>
@@ -216,10 +216,9 @@
         <div class="dropdown" style="float:right">
             <button class="btn btn-default" style="float:right"><span class="glyphicon glyphicon-th"></span></button>
             <div class="dropdown-content">
-                <a href="#">商品资料管理</a>
-                <a href="#">客戶资料管理</a>
-                <a href="#">供貨商资料管理</a>
-                <a href="#">合同維護</a>
+                <a th:href="Goods">商品资料</a>
+                <a th:href="supplier">供货商资料</a>
+                <a th:href="Customer">客户资料</a>
             </div>
         </div>
 </form>

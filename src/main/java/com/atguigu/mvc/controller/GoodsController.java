@@ -24,8 +24,9 @@ public class GoodsController {
         HttpSession session = request.getSession();
         User user = (User)session.getAttribute("User");
         if(user == null) return "login";
-        Collection<Goods> goodsList = goodsDao.getall();
+        Collection<Goods> goodsList = goodsDao.getall(request);
         model.addAttribute("goodsList", goodsList);
+
         return "Goods_list";
     }
 
@@ -38,9 +39,15 @@ public class GoodsController {
         goodsDao.save(goods);
         return "redirect:/Goods";
     }
+
     @RequestMapping(value = "/goods_delete" ,method = RequestMethod.POST)
     public String deleteGoods(Integer id) throws IOException{
         goodsDao.delete(id);
         return "redirect:/Goods";
+    }
+    @RequestMapping(value = "/modify", method = RequestMethod.POST)
+    public String modify(Integer amount, HttpServletRequest request){
+        request.getSession().setAttribute("totamount", amount);
+        return "system_management";
     }
 }

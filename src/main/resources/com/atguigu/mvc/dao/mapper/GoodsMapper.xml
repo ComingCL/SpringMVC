@@ -29,5 +29,8 @@
     <select id="getGoodsById" resultType="com.atguigu.mvc.dao.pojo.Goods">
         select * from goods where goodid = 3
     </select>
-
+<!--    Integer Get_Amount();-->
+    <select id="Get_Amount" resultType="Integer">
+        select sum(amount) from goods
+    </select>
 </mapper>

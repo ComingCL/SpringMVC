@@ -1,13 +1,24 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>系统管理</title>
 </head>
 <body>
-<p>当前用户:</p>
-<p>个人信息:</p>
-<p>修改密码:</p>
-<input type="submit" th:action="">
+<p>当前用户: <span th:text="${session.User.username}"></span></p>
+<a th:href="logout">退出登录</a>
+<form th:action="@{/modify}" method="post">
+    设置库存总量: <label>
+    <input type="text" name="amount">
+</label>
+    <input type="submit" value="修改"/>
+</form>
+
+<form th:action="@{/change_password}" method="post">
+    修改密码:
+    <input type="text" name="password">
+    </label>
+    <input type="submit" value="修改">
+</form>
 </body>
 </html>

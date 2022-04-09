@@ -7,7 +7,6 @@
 <body>
 商品名：
 <input type="text" name ="goods_name" value="输入商品名"/>
-<button onclick="window.location.href = 'https://www.baidu.com/'">查詢</button>
 <table border="1">
     <caption>库存管理</caption>
     <tr><th>商品编号</th><th>商品名</th><th>库存数量</th></tr>
@@ -15,7 +14,10 @@
         <td th:text="${goods.goodid}"></td>
         <td th:text="${goods.goodname}"></td>
         <td th:text="${goods.amount}"></td>
+
     </tr>
+    当前库存/库存总量: <a th:text="${session.amount}"></a>
+    <a th:text="${session.totamount}"></a>
 </table>
 </body>
 </html>

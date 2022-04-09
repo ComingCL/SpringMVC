@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>资料管理</title>
+    <title>商品资料</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="" />
@@ -154,9 +154,9 @@
         <div class="dropdown" style="float:right">
             <button class="btn btn-default" style="float:right"><span class="glyphicon glyphicon-th"></span></button>
                 <div class="dropdown-content">
-                <a href="#">资料管理</a>
-                <a href="#">货物管理</a>
-                <a href="#">仓库管理</a>
+                <a th:href="Goods">商品资料</a>
+                <a th:href="supplier">供货商资料</a>
+                <a th:href="Customer">客户资料</a>
                 </div>
         </div>
     </div>

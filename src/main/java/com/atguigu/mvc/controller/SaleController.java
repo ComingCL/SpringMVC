@@ -41,4 +41,11 @@ public class SaleController {
         salesDao.save(sales);
         return "redirect:/Sales";
     }
+//
+    @RequestMapping(value = "/sales_del", method = RequestMethod.POST)
+    public String delsales(Integer salesid) throws IOException{
+        salesDao.Delete(salesid);
+        return "Sales_list";
+    }
+
 }

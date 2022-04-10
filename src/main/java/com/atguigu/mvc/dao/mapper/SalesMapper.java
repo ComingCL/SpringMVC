@@ -9,4 +9,6 @@ public interface SalesMapper {
     List<Sales> get_sales_list();
     int Insert_Sales(Sales sales);
 
+    void Del_Sales(Integer salesid);
+
 }

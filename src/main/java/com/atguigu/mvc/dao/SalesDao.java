@@ -27,4 +27,10 @@ public class SalesDao {
         sales = mapper.get_sales_list();
         return sales;
     }
+
+    public void Delete(Integer salesid) throws IOException{
+        SalesMapper mapper = sqlSession.getMapper(SalesMapper.class);
+        mapper.Del_Sales(salesid);
+    }
+
 }

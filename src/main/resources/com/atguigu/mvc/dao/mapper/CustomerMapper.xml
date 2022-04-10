@@ -14,7 +14,7 @@
 <!--    void Update_Customer(Customer customer);-->
     <update id="Update_Customer">
         update customers set customername = #{customername} where customerid = #{customerid} and LENGTH(trim(#{customername})) > 0;
-        update customers set telephone = #{telephone} where customerid = #{customerid} and LENGTH(trim(#{telphone})) > 0;
+        update customers set telephone = #{telephone} where customerid = #{customerid} and LENGTH(trim(#{telephone})) > 0;
         update customers set starttime = #{starttime} where customerid = #{customerid} and LENGTH(trim(#{starttime})) > 0;
         update customers set endtime = #{endttime} where customerid = #{customerid} and LENGTH(trim(#{endtime})) > 0;
     </update>

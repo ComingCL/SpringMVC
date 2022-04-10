@@ -171,7 +171,7 @@
         <a  class="btn btn-default btn-sm" style="float:right" data-bs-toggle="modal" data-bs-target="#AddSupplier"><span class="glyphicon glyphicon-plus"></span> 增加</a>
         <a  class="btn btn-default btn-sm" style="float:right" data-bs-toggle="modal" data-bs-target="#DeleteSupplier"><span class="glyphicon glyphicon-remove"></span> 删除</a>
         <a  class="btn btn-default btn-sm" style="float:right" data-bs-toggle="modal" data-bs-target="#ModifySupplier"><span class="glyphicon glyphicon-pencil"></span> 修改</a>
-        <div class="dropdown" style="float:right">
+        <div class="dropdown" style="float: left">
             <button class="btn btn-default" style="float:right"><span class="glyphicon glyphicon-th"></span></button>
             <div class="dropdown-content">
                 <a th:href="Goods">商品资料</a>
@@ -179,7 +179,6 @@
                 <a th:href="Customer">客户资料</a>
             </div>
         </div>
-    </div>
 </form>
 <br><br>
 <form th:action="supplier_add" method="post">
@@ -199,7 +198,7 @@
 </form>
 
 <!-- 增加按鈕彈出框（AddModal） -->
-<div class="modal" id="AddSupplier">
+<div class="modal" id="AddSupplier" style="background:url(images/bann5.jpg)">
     <div class="modal-dialog">
         <div class="modal-content">
 
@@ -241,7 +240,7 @@
 </div>
 
 <!-- 删除按鈕彈出框（DeleteSupplier） -->
-<div class="modal" id="DeleteSupplier">
+<div class="modal" id="DeleteSupplier" style="background:url(images/bann5.jpg)">
     <div class="modal-dialog">
         <div class="modal-content">
 
@@ -269,7 +268,7 @@
 </div>
 
 <!-- 修改按鈕彈出框（ModifySupplier） -->
-<div class="modal" id="ModifySupplier">
+<div class="modal" id="ModifySupplier" style="background:url(images/bann5.jpg)">
     <div class="modal-dialog">
         <div class="modal-content">
 
@@ -317,7 +316,7 @@
 </div>
 
 <!-- 查询按鈕彈出框（SearchSupplier） -->
-<div class="modal" id="SearchSupplier">
+<div class="modal" id="SearchSupplier" style="background:url(images/bann5.jpg)">
     <div class="modal-dialog">
         <div class="modal-content">
 

@@ -55,6 +55,18 @@
 }
 </style>
     <script>
+        //根据商品名查询商品
+        window.search_Goods= function() {
+            var search_name = document.getElementById("search_Goods_name").value;
+            $.ajax({
+                url: "goods_add",//常乐来写
+                type: 'POST',
+                data:{"goodname":search_name},
+                success: function (data) {
+                    $("body").html(data);
+                }
+            });
+        }
         //删除商品
         window.delete_Goods= function() {
             var delete_id = document.getElementById("delete_Goods_id").value;
@@ -138,7 +150,7 @@
         <a  class="btn btn-default btn-sm" style="float:right" data-bs-toggle="modal" data-bs-target="#add_goods"><span class="glyphicon glyphicon-plus"></span> 增加</a>
         <a  class="btn btn-default btn-sm" style="float:right" data-bs-toggle="modal" data-bs-target="#delete_goods"><span class="glyphicon glyphicon-remove"></span> 删除</a>
         <a  class="btn btn-default btn-sm" style="float:right" data-bs-toggle="modal" data-bs-target="#modify_goods"><span class="glyphicon glyphicon-pencil"></span> 修改</a>
-        <div class="dropdown" style="float:right">
+        <div class="dropdown" style="float: left">
             <button class="btn btn-default" style="float:right"><span class="glyphicon glyphicon-th"></span></button>
                 <div class="dropdown-content">
                 <a th:href="Goods">商品资料</a>
@@ -167,15 +179,40 @@
     </div>
 </form>
 <!-- 删除商品模态框 -->
-<div class="modal" id="delete_goods">
+<div class="modal" id="search_goods" style="background:url(images/bann5.jpg)">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- 模态标题 -->
+            <div class="modal-header">
+                <h4 class="modal-title">查询</h4>
+                <label style="float: left; margin-top:0.15cm; margin-left:0.1cm" for="search_Goods_name">商品名：</label>
+                <input type="text" style="float: left; color: #000000" class="form-control" id="search_Goods_name" placeholder="请在这里输入商品名">
+                <br>
+            </div>
+
+            <!-- 模态主体 -->
+            <div class="modal-body">
+            </div>
+
+            <!-- 模态页脚 -->
+            <div class="modal-footer">
+                <button onClick="return search_Goods()" type="button" class="delSure btn btn-info" data-dismiss="modal">确定</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 删除商品模态框 -->
+<div class="modal" id="delete_goods" style="background:url(images/bann5.jpg)">
     <div class="modal-dialog">
         <div class="modal-content">
 
             <!-- 模态标题 -->
             <div class="modal-header">
                 <h4 class="modal-title">删除</h4>
-                    <label style="float: left; margin-top:0.15cm; margin-left:0.1cm" for="Goods_id">商品编号：</label>
-                    <input type="text" style="float: left" class="form-control" id="delete_Goods_id" placeholder="请在这里输入商品编号">
+                    <label style="float: left; margin-top:0.15cm; margin-left:0.1cm" for="delete_Goods_id">商品编号：</label>
+                    <input type="text" style="float: left; color: #000000" class="form-control" id="delete_Goods_id" placeholder="请在这里输入商品编号">
                     <br>
             </div>
 
@@ -186,14 +223,14 @@
 
             <!-- 模态页脚 -->
             <div class="modal-footer">
-                <button onclick="return delete_Goods()" type="button" class="delSure btn btn-info" data-dismiss="modal">确定</button>
+                <button onClick="return delete_Goods()" type="button" class="delSure btn btn-info" data-dismiss="modal">确定</button>
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">取消</button>
             </div>
         </div>
     </div>
 </div>
 <!-- 增加商品模态框 -->
-<div class="modal" id="add_goods">
+<div class="modal" id="add_goods" style="background:url(images/bann5.jpg)">
     <div class="modal-dialog">
         <div class="modal-content">
 
@@ -204,23 +241,23 @@
 
             <!-- 模态主体 -->
             <div class="modal-body">
-                <label style="float: left; margin-top:0.15cm; margin-left:0.1cm" for="Goods_name">商品名:</label>
-                <input type="text" style="float:left" class="form-control" id="add_Goods_name" placeholder="请在这里输入商品名">
+                <label style="float: left; margin-top:0.15cm; margin-left:0.1cm" for="add_Goods_name">商品名:</label>
+                <input type="text" style="float:left; color: #000000" class="form-control" id="add_Goods_name" placeholder="请在这里输入商品名">
                 <br>
-                <label style="float: left; margin-top:0.15cm; margin-left:0.1cm" for="Goods_amount">数量:</label>
-                <input type="text" style="float:left" class="form-control" id="add_Goods_amount" placeholder="请在这里输入商品数量">
+                <label style="float: left; margin-top:0.15cm; margin-left:0.1cm" for="add_Goods_amount">数量:</label>
+                <input type="text" style="float:left; color: #000000" class="form-control" id="add_Goods_amount" placeholder="请在这里输入商品数量">
             </div>
             <br>
             <!-- 模态页脚 -->
             <div class="modal-footer">
-                <button onclick="return add_Goods()" type="button" class="delSure btn btn-info" data-dismiss="modal">确定</button>
+                <button onClick="return add_Goods()" type="button" class="delSure btn btn-info" data-dismiss="modal">确定</button>
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">取消</button>
             </div>
         </div>
     </div>
 </div>
 <!-- 修改商品模态框 -->
-<div class="modal" id="modify_goods">
+<div class="modal" id="modify_goods" style="background:url(images/bann5.jpg)">
     <div class="modal-dialog">
         <div class="modal-content">
 
@@ -231,16 +268,16 @@
 
             <!-- 模态主体 -->
             <div class="modal-body">
-                <label style="float: left; margin-top:0.15cm; margin-left:0.1cm" for="Goods_id">商品编号</label>
-                <input type="text" style="float:left" class="form-control" id="modify_Goods_id" placeholder="请在这里输入商品编号:">
+                <label style="float: left; margin-top:0.15cm; margin-left:0.1cm" for="modify_Goods_id">商品编号</label>
+                <input type="text" style="float:left; color: #000000" class="form-control" id="modify_Goods_id" placeholder="请在这里输入商品编号:">
                 <br>
-                <label style="float: left; margin-top:0.15cm; margin-left:0.1cm" for="Goods_name">商品名:</label>
-                <input type="text" style="float:left" class="form-control" id="modify_Goods_name" placeholder="请在这里输入商品名">
+                <label style="float: left; margin-top:0.15cm; margin-left:0.1cm" for="modify_Goods_name">商品名:</label>
+                <input type="text" style="float:left; color: #000000" class="form-control" id="modify_Goods_name" placeholder="请在这里输入商品名">
             </div>
             <br>
             <!-- 模态页脚 -->
             <div class="modal-footer">
-                <button onclick="return modify_Goods()" type="button" class="delSure btn btn-info" data-dismiss="modal">确定</button>
+                <button onClick="return modify_Goods()" type="button" class="delSure btn btn-info" data-dismiss="modal">确定</button>
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">取消</button>
             </div>
         </div>

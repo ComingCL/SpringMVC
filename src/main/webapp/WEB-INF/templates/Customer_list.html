@@ -132,7 +132,7 @@
     </script>
 </head>
 
-<body bgcolor="black">
+<body bgcolor="#FFFFFF">
 <div class="banner-w2layouts" style="width:100%; height:105px;" id="home">
     <!--Top-Bar-->
     <div class="header">
@@ -169,7 +169,7 @@
     <a  class="btn btn-default btn-sm" style="float:right" data-bs-toggle="modal" data-bs-target="#delete_customer"><span class="glyphicon glyphicon-remove"></span> 删除</a>
     <a  class="btn btn-default btn-sm" style="float:right" data-bs-toggle="modal" data-bs-target="#modify_customer"><span class="glyphicon glyphicon-pencil"></span> 修改</a>
     <div style="display:inline">
-        <div class="dropdown" style="float:right">
+        <div class="dropdown" style="float:left">
             <button class="btn btn-default" style="float:right"><span class="glyphicon glyphicon-th"></span></button>
             <div class="dropdown-content">
                 <a th:href="Goods">商品资料</a>
@@ -197,7 +197,7 @@
 </form>
 
 <!-- 查询用户模态框 -->
-<div class="modal" id="search_customer">
+<div class="modal" id="search_customer" style="background:url(images/bann5.jpg)">
     <div class="modal-dialog">
         <div class="modal-content">
 
@@ -205,7 +205,7 @@
             <div class="modal-header">
                 <h4 class="modal-title">查询</h4>
                 <label style="float: left; margin-top:0.15cm; margin-left:0.1cm" for="search_customer_name">用户名：</label>
-                <input type="text" style="float: left" class="form-control" id="search_customer_name" placeholder="请在这里输入用户名">
+                <input type="text" style="float: left; color: #000000" class="form-control" id="search_customer_name" placeholder="请在这里输入用户名">
                 <br>
             </div>
 
@@ -215,7 +215,7 @@
 
             <!-- 模态页脚 -->
             <div class="modal-footer">
-                <button onclick="return search_Customer()" type="button" class="delSure btn btn-info" data-dismiss="modal">确定</button>
+                <button onClick="return search_Customer()" type="button" class="delSure btn btn-info" data-dismiss="modal">确定</button>
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">取消</button>
             </div>
         </div>
@@ -223,7 +223,7 @@
 </div>
 
 <!-- 删除用户模态框 -->
-<div class="modal" id="delete_customer">
+<div class="modal" id="delete_customer" style="background:url(images/bann5.jpg)">
     <div class="modal-dialog">
         <div class="modal-content">
 
@@ -231,7 +231,7 @@
             <div class="modal-header">
                 <h4 class="modal-title">删除</h4>
                 <label style="float: left; margin-top:0.15cm; margin-left:0.1cm" for="delete">用户编号：</label>
-                <input type="text" style="float: left" class="form-control" id="delete" placeholder="请在这里输入用户编号">
+                <input type="text" style="float: left; color: #000000" class="form-control" id="delete" placeholder="请在这里输入用户编号">
                 <br>
             </div>
 
@@ -242,7 +242,7 @@
 
             <!-- 模态页脚 -->
             <div class="modal-footer">
-                <button onclick="return delete_Customer()" type="button" class="delSure btn btn-info" data-dismiss="modal">确定</button>
+                <button onClick="return delete_Customer()" type="button" class="delSure btn btn-info" data-dismiss="modal">确定</button>
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">取消</button>
             </div>
         </div>
@@ -250,7 +250,7 @@
 </div>
 
 <!-- 增加用户模态框 -->
-<div class="modal" id="add_customer">
+<div class="modal" id="add_customer" style="background:url(images/bann5.jpg)">
     <div class="modal-dialog">
         <div class="modal-content">
 
@@ -262,21 +262,21 @@
             <!-- 模态主体 -->
             <div class="modal-body">
                 <label style="float: left; margin-top:0.15cm; margin-left:0.1cm" for="add_Customer_name">用户名：</label>
-                <input type="text" style="float: left" class="form-control" id="add_Customer_name" placeholder="请在这里输入用户名">
+                <input type="text" style="float: left; color: #000000" class="form-control" id="add_Customer_name" placeholder="请在这里输入用户名">
                 <br>
                 <label style="float: left; margin-top:0.15cm; margin-left:0.1cm" for="add_Customer_telephone">用户电话：</label>
-                <input type="text" style="float: left" class="form-control" id="add_Customer_telephone" placeholder="请在这里输入用户电话">
+                <input type="text" style="float: left; color: #000000" class="form-control" id="add_Customer_telephone" placeholder="请在这里输入用户电话">
                 <br>
                 <label style="float: left; margin-top:0.15cm; margin-left:0.1cm" for="add_Customer_starttime">开始日期：</label>
-                <input type="date" style="float: left" class="form-control" id="add_Customer_starttime" placeholder="请在这里输入开始日期">
+                <input type="date" style="float: left; color: #000000" class="form-control" id="add_Customer_starttime" placeholder="请在这里输入开始日期">
                 <br>
                 <label style="float: left; margin-top:0.15cm; margin-left:0.1cm" for="add_Customer_endtime">结束日期：</label>
-                <input type="date" style="float: left" class="form-control" id="add_Customer_endtime" placeholder="请在这里输入结束日期">
+                <input type="date" style="float: left; color: #000000" class="form-control" id="add_Customer_endtime" placeholder="请在这里输入结束日期">
             </div>
             <br>
             <!-- 模态页脚 -->
             <div class="modal-footer">
-                <button onclick="return add_Customer()" type="button" class="delSure btn btn-info" data-dismiss="modal">确定</button>
+                <button onClick="return add_Customer()" type="button" class="delSure btn btn-info" data-dismiss="modal">确定</button>
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">取消</button>
             </div>
         </div>
@@ -284,7 +284,7 @@
 </div>
 
 <!-- 修改用户模态框 -->
-<div class="modal" id="modify_customer">
+<div class="modal" id="modify_customer" style="background:url(images/bann5.jpg)">
     <div class="modal-dialog">
         <div class="modal-content">
 
@@ -296,24 +296,24 @@
             <!-- 模态主体 -->
             <div class="modal-body">
                 <label style="float: left; margin-top:0.15cm; margin-left:0.1cm" for="modify_Customer_id">用户编号：</label>
-                <input type="text" style="float: left" class="form-control" id="modify_Customer_id" placeholder="请在这里输入用户编号">
+                <input type="text" style="float: left; color: #000000" class="form-control" id="modify_Customer_id" placeholder="请在这里输入用户编号">
                 <br>
                 <label style="float: left; margin-top:0.15cm; margin-left:0.1cm" for="modify_Customer_name">用户名：</label>
-                <input type="text" style="float: left" class="form-control" id="modify_Customer_name" placeholder="请在这里输入用户名">
+                <input type="text" style="float: left; color: #000000" class="form-control" id="modify_Customer_name" placeholder="请在这里输入用户名">
                 <br>
                 <label style="float: left; margin-top:0.15cm; margin-left:0.1cm" for="modify_Customer_telephone">用户电话：</label>
-                <input type="text" style="float: left" class="form-control" id="modify_Customer_telephone" placeholder="请在这里输入用户电话">
+                <input type="text" style="float: left; color: #000000" class="form-control" id="modify_Customer_telephone" placeholder="请在这里输入用户电话">
                 <br>
                 <label style="float: left; margin-top:0.15cm; margin-left:0.1cm" for="modify_Customer_starttime">开始日期：</label>
-                <input type="date" style="float: left" class="form-control" id="modify_Customer_starttime" placeholder="请在这里输入开始日期">
+                <input type="date" style="float: left; color: #000000" class="form-control" id="modify_Customer_starttime" placeholder="请在这里输入开始日期">
                 <br>
                 <label style="float: left; margin-top:0.15cm; margin-left:0.1cm" for="modify_Customer_endtime">结束日期：</label>
-                <input type="date" style="float: left" class="form-control" id="modify_Customer_endtime" placeholder="请在这里输入结束日期">
+                <input type="date" style="float: left; color: #000000" class="form-control" id="modify_Customer_endtime" placeholder="请在这里输入结束日期">
             </div>
             <br>
             <!-- 模态页脚 -->
             <div class="modal-footer">
-                <button onclick="return modify_Customer()" type="button" class="delSure btn btn-info" data-dismiss="modal">确定</button>
+                <button onClick="return modify_Customer()" type="button" class="delSure btn btn-info" data-dismiss="modal">确定</button>
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">取消</button>
             </div>
         </div>

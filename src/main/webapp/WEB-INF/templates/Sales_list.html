@@ -55,27 +55,27 @@
         }
     </style>
     <script>
-        //查询销售订单
+        //查询销售订单(已实现)
         window.search_Sales= function() {
-            var search_name = document.getElementById("search_Goods_name").value;
+            var search_id = document.getElementById("search_Goods_id").value;
             $.ajax({
-                url: "goods_add",//常乐来写
+                url: "sales_search",//常乐来写
                 type: 'POST',
-                data:{"goodname":search_name},
+                data:{"goodid":search_id},
                 success: function (data) {
                     $("body").html(data);
                 }
             });
         }
-        //删除销售订单
+        //删除销售订单(已实现)
         window.delete_Sales= function() {
-            var delete_id = document.getElementById("delete_Goods_id").value;
+            var delete_id = document.getElementById("delete_Sales_id").value;
             if (delete_id<=0) {
-                alert("商品id必须是正数哦");
+                alert("id必须是正数哦");
             } else {
                 $(".delSure").click(function () {
                     $.ajax({
-                        url: "goods_delete?id="+delete_id,
+                        url: "sales_del?salesid="+delete_id,
                         type: 'POST',
                         success: function (data) {
                             $("body").html(data);
@@ -84,14 +84,20 @@
                 });
             }
         }
-        //增加销售订单
+        //增加销售订单(已实现)
         window.add_Sales= function() {
-            var add_name = document.getElementById("add_Goods_name").value;
-            var add_amount= document.getElementById("add_Goods_amount").value;
+            //#{customerid}, #{goodid}, #{salesprice}, #{salestime}, #{amount}, #{isreturn}
+            var add_c_id = document.getElementById("add_c_id").value;
+            var add_g_id= document.getElementById("add_g_id").value;
+            var add_price = document.getElementById("add_Goods_price").value;
+            var add_time= document.getElementById("add_Goods_time").value;
+            var add_amount = document.getElementById("add_Goods_amount").value;
+            var add_isreturn= document.getElementById("add_Goods_isreturn").value;
             $.ajax({
-                url: "Goods_save",
+                url: "sales_save",
                 type: 'POST',
-                data:{"goodname":add_name,"amount":add_amount,"goodname":add_name,"amount":add_amount,"goodname":add_name,"amount":add_amount},
+                data:{"customerid":add_c_id,"goodid":add_g_id,"salesprice":add_price,
+                      "salestime":add_time,"amount":add_amount,"isreturn":add_isreturn},
                 success: function (data) {
                     $("body").html(data);
                 }
@@ -99,12 +105,18 @@
         }
         //修改销售订单
         window.modify_Sales= function() {
-            var add_id= document.getElementById("modify_Goods_id").value;//getElementById用于根据input标签的id值获得对应input标签中的值
-            var add_name = document.getElementById("modify_Goods_name").value;
+            var modify_s_id= document.getElementById("modify_s_id").value;//getElementById用于根据input标签的id值获得对应input标签中的值
+            var modify_c_id = document.getElementById("modify_c_id").value;
+            var modify_g_id= document.getElementById("modify_g_id").value;
+            var modify_price = document.getElementById("modify_Goods_price").value;
+            var modify_time= document.getElementById("modify_Goods_time").value;
+            var modify_amount = document.getElementById("modify_Goods_amount").value;
+            var modify_isreturn= document.getElementById("modify_Goods_isreturn").value;
             $.ajax({
-                url: "supplier_change",//向Controller中的@RequestMapping(value = "/goods_add")对应的方法传参数
+                url: "sales_modify",//向Controller中的@RequestMapping(value = "/goods_add")对应的方法传参数
                 type: 'POST',
-                data:{"id":add_id,"goodname":add_name},//参数的名字叫id和goodname对应于GoodsMapper.xml中的参数名
+                data:{"customerid":modify_c_id,"goodid":modify_g_id,"salesprice":modify_price,
+                    "salestime":modify_time,"amount":modify_amount,"isreturn":modify_isreturn,"salesid":modify_s_id},//参数的名字叫id和goodname对应于GoodsMapper.xml中的参数名
                 success: function (data) {
                     $("body").html(data);
                 }
@@ -172,7 +184,7 @@
     </table>
     </div>
 </form>
-<!-- 删除商品模态框 -->
+<!-- 查询模态框 -->
 <div class="modal" id="search_sales" style="background:url(images/bann5.jpg)">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -180,8 +192,8 @@
             <!-- 模态标题 -->
             <div class="modal-header">
                 <h4 class="modal-title">查询</h4>
-                <label style="float: left; margin-top:0.15cm; margin-left:0.1cm" for="search_Goods_name">商品名：</label>
-                <input type="text" style="float: left; color: #000000" class="form-control" id="search_Goods_name" placeholder="请在这里输入商品名">
+                <label style="float: left; margin-top:0.15cm; margin-left:0.1cm" for="search_Goods_id">订单编号：</label>
+                <input type="text" style="float: left; color: #000000" class="form-control" id="search_Goods_id" placeholder="请在这里输入订单编号">
                 <br>
             </div>
 
@@ -205,8 +217,8 @@
             <!-- 模态标题 -->
             <div class="modal-header">
                 <h4 class="modal-title">删除</h4>
-                <label style="float: left; margin-top:0.15cm; margin-left:0.1cm" for="delete_Goods_id">商品编号：</label>
-                <input type="text" style="float: left; color: #000000" class="form-control" id="delete_Goods_id" placeholder="请在这里输入商品编号">
+                <label style="float: left; margin-top:0.15cm; margin-left:0.1cm" for="delete_Sales_id">销售单编号：</label>
+                <input type="text" style="float: left; color: #000000" class="form-control" id="delete_Sales_id" placeholder="请在这里输入销售单编号">
                 <br>
             </div>
 
@@ -235,11 +247,21 @@
 
             <!-- 模态主体 -->
             <div class="modal-body">
-                <label style="float: left; margin-top:0.15cm; margin-left:0.1cm" for="add_Goods_name">商品名:</label>
-                <input type="text" style="float:left; color: #000000" class="form-control" id="add_Goods_name" placeholder="请在这里输入商品名">
+                <label style="float: left; margin-top:0.15cm; margin-left:0.1cm" for="add_c_id">用户编号:</label>
+                <input type="text" style="float:left; color: #000000" class="form-control" id="add_c_id" placeholder="请在这里输入用户编号">
                 <br>
-                <label style="float: left; margin-top:0.15cm; margin-left:0.1cm" for="add_Goods_amount">数量:</label>
+                <label style="float: left; margin-top:0.15cm; margin-left:0.1cm" for="add_g_id">商品编号:</label>
+                <input type="text" style="float:left; color: #000000" class="form-control" id="add_g_id" placeholder="请在这里输入商品编号">
+                <label style="float: left; margin-top:0.15cm; margin-left:0.1cm" for="add_Goods_price">商品价格:</label>
+                <input type="text" style="float:left; color: #000000" class="form-control" id="add_Goods_price" placeholder="请在这里输入商品价格">
+                <br>
+                <label style="float: left; margin-top:0.15cm; margin-left:0.1cm" for="add_Goods_time">时间:</label>
+                <input type="date" style="float:left; color: #000000" class="form-control" id="add_Goods_time" placeholder="请在这里输入时间">
+                <label style="float: left; margin-top:0.15cm; margin-left:0.1cm" for="add_Goods_amount">商品数量:</label>
                 <input type="text" style="float:left; color: #000000" class="form-control" id="add_Goods_amount" placeholder="请在这里输入商品数量">
+                <br>
+                <label style="float: left; margin-top:0.15cm; margin-left:0.1cm" for="add_Goods_isreturn">是否退货:</label>
+                <input type="text" style="float:left; color: #000000" class="form-control" id="add_Goods_isreturn" placeholder="请在这里输入是否退货">
             </div>
             <br>
             <!-- 模态页脚 -->
@@ -262,11 +284,24 @@
 
             <!-- 模态主体 -->
             <div class="modal-body">
-                <label style="float: left; margin-top:0.15cm; margin-left:0.1cm" for="modify_Goods_id">商品编号</label>
-                <input type="text" style="float:left; color: #000000" class="form-control" id="modify_Goods_id" placeholder="请在这里输入商品编号:">
+                <label style="float: left; margin-top:0.15cm; margin-left:0.1cm" for="modify_s_id">销售编号</label>
+                <input type="text" style="float:left; color: #000000" class="form-control" id="modify_s_id" placeholder="请在这里输入销售编号:">
                 <br>
-                <label style="float: left; margin-top:0.15cm; margin-left:0.1cm" for="modify_Goods_name">商品名:</label>
-                <input type="text" style="float:left; color: #000000" class="form-control" id="modify_Goods_name" placeholder="请在这里输入商品名">
+                <label style="float: left; margin-top:0.15cm; margin-left:0.1cm" for="modify_c_id">用户编号:</label>
+                <input type="text" style="float:left; color: #000000" class="form-control" id="modify_c_id" placeholder="请在这里输入用户编号">
+                <br>
+                <label style="float: left; margin-top:0.15cm; margin-left:0.1cm" for="modify_g_id">商品编号:</label>
+                <input type="text" style="float:left; color: #000000" class="form-control" id="modify_g_id" placeholder="请在这里输入商品编号">
+                <label style="float: left; margin-top:0.15cm; margin-left:0.1cm" for="modify_Goods_price">商品价格:</label>
+                <input type="text" style="float:left; color: #000000" class="form-control" id="modify_Goods_price" placeholder="请在这里输入商品价格">
+                <br>
+                <label style="float: left; margin-top:0.15cm; margin-left:0.1cm" for="modify_Goods_time">时间:</label>
+                <input type="date" style="float:left; color: #000000" class="form-control" id="modify_Goods_time" placeholder="请在这里输入时间">
+                <label style="float: left; margin-top:0.15cm; margin-left:0.1cm" for="modify_Goods_amount">商品数量:</label>
+                <input type="text" style="float:left; color: #000000" class="form-control" id="modify_Goods_amount" placeholder="请在这里输入商品数量">
+                <br>
+                <label style="float: left; margin-top:0.15cm; margin-left:0.1cm" for="modify_Goods_isreturn">是否退货:</label>
+                <input type="text" style="float:left; color: #000000" class="form-control" id="modify_Goods_isreturn" placeholder="请在这里输入是否退货">
             </div>
             <br>
             <!-- 模态页脚 -->

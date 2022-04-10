@@ -9,4 +9,7 @@ public interface PurchaseMapper {
     int Insert_Purchase(Purchase purchase);
     void Delete_Purchase(Integer id);
 
+    void Modify_Purchase(Purchase purchase);
+
+    List<Purchase> Serach_Purchase(String purchasename);
 }

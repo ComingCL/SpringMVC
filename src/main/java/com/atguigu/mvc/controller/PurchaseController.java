@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Collection;
+import java.util.List;
 
 @Controller
 public class PurchaseController {
@@ -45,7 +46,17 @@ public class PurchaseController {
         purchaseDao.del(purchaseid);
         return "redirect:/Purchase";
     }
-//    订单
-//    @RequestMapping(value = "/Purchase_", method = RequestMethod.POST)
-//    public String
+//    修改订单
+    @RequestMapping(value = "/Purchase_modify", method = RequestMethod.POST)
+    public String Purchase_modify(Purchase purchase) throws IOException{
+        purchaseDao.modify(purchase);
+        return "redirect:/Purchase";
+    }
+//    查询订单
+    @RequestMapping(value = "/Purchase_search", method = RequestMethod.POST)
+    public String Purchase_search(String purchasename, Model model) throws IOException{
+        List<Purchase> purchaseList = purchaseDao.search(purchasename);
+        model.addAttribute("purchaseList", purchaseList);
+        return "Purchase_list";
+    }
 }

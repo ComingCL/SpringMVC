@@ -2,43 +2,43 @@ package com.atguigu.mvc.dao.pojo;
 
 import java.sql.Date;
 public class Purchase {
-    private int purchaseid;
-    private int supplierid;
-    private int goodid;
-    private double purchaseprice;
+    private Integer purchaseid;
+    private Integer supplierid;
+    private Integer goodid;
+    private Double purchaseprice;
     private String purchasetime;
-    private int amount;
-    private int isreturn;
+    private Integer amount;
+    private Integer isreturn;
 
-    public int getPurchaseid() {
+    public Integer getPurchaseid() {
         return purchaseid;
     }
 
-    public void setPurchaseid(int purchaseid) {
+    public void setPurchaseid(Integer purchaseid) {
         this.purchaseid = purchaseid;
     }
 
-    public int getSupplierid() {
+    public Integer getSupplierid() {
         return supplierid;
     }
 
-    public void setSupplierid(int supplierid) {
+    public void setSupplierid(Integer supplierid) {
         this.supplierid = supplierid;
     }
 
-    public int getGoodid() {
+    public Integer getGoodid() {
         return goodid;
     }
 
-    public void setGoodid(int goodid) {
+    public void setGoodid(Integer goodid) {
         this.goodid = goodid;
     }
 
-    public double getPurchaseprice() {
+    public Double getPurchaseprice() {
         return purchaseprice;
     }
 
-    public void setPurchaseprice(double purchaseprice) {
+    public void setPurchaseprice(Double purchaseprice) {
         this.purchaseprice = purchaseprice;
     }
 
@@ -50,19 +50,19 @@ public class Purchase {
         this.purchasetime = purchasetime;
     }
 
-    public int getAmount() {
+    public Integer getAmount() {
         return amount;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(Integer amount) {
         this.amount = amount;
     }
 
-    public int getIsreturn() {
+    public Integer getIsreturn() {
         return isreturn;
     }
 
-    public void setIsreturn(int isreturn) {
+    public void setIsreturn(Integer isreturn) {
         this.isreturn = isreturn;
     }
 }

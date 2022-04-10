@@ -151,7 +151,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a class="hvr-underline-from-center active scroll" href="#">当前用户: <span th:text="${session.User.username}"></span></a></li>
-                    <li><a class="hvr-underline-from-center active scroll" href="#">主页</a></li>
+                    <li><a class="hvr-underline-from-center active scroll" th:href="homepage">主页</a></li>
                     <li><a th:href="Goods" class="hvr-underline-from-center scroll">资料管理</a></li>
                     <li><a th:href="Purchase" class="hvr-underline-from-center scroll">采购管理</a></li>
                     <li><a th:href="Sales" class="hvr-underline-from-center scroll scroll">销售管理</a></li>

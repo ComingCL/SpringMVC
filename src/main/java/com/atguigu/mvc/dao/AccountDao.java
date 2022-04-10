@@ -31,7 +31,7 @@ public class AccountDao {
         List<Purchase> purchaseList = purchaseMapper.Get_Purchase_List();
         List<Sales> salesList = salesMapper.get_sales_list();
         HashMap<Integer, Account> accountHashMap = new HashMap<>();
-        Integer number = 1;
+        int number = 1;
         for(Goods goods : goodsList) {
             accountHashMap.put(goods.getGoodid(), new Account(number, goods.getGoodname(), 0, 0.0, 0.0, 0, goods.getAmount()));
             number += 1;

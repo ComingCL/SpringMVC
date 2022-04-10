@@ -37,4 +37,8 @@ public class SalesDao {
         SalesMapper mapper = sqlSession.getMapper(SalesMapper.class);
         return mapper.Search_Sale(goodid);
     }
+    public void modify(Sales sales) throws IOException{
+        SalesMapper mapper = sqlSession.getMapper(SalesMapper.class);
+        mapper.modify(sales);
+    }
 }

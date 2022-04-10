@@ -1,5 +1,6 @@
 package com.atguigu.dao.mvc.test;
 
+import com.atguigu.mvc.dao.AccountDao;
 import com.atguigu.mvc.dao.mapper.GoodsMapper;
 import com.atguigu.mvc.dao.pojo.Goods;
 import com.atguigu.mvc.utils.SqlSessionUtils;
@@ -11,6 +12,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.Test;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
@@ -51,5 +53,10 @@ public class MyBatistest {
         SqlSessionFactory sqlSessionFactory =  new SqlSessionFactoryBuilder().build(is);
         SqlSession sqlSession = sqlSessionFactory.openSession(true);
         GoodsMapper mapper = sqlSession.getMapper(GoodsMapper.class);
+    }
+    @Test
+    public void testAccount() throws IOException {
+        AccountDao accountDao = new AccountDao();
+        accountDao.getall();
     }
 }

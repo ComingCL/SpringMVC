@@ -21,7 +21,7 @@ public class AccountController {
         User user = (User) request.getSession().getAttribute("User");
         if(user == null) return "login";
 
-        Collection<Account> accountList = accountDao.getall(request);
+//        Collection<Account> accountList = accountDao.getall(request);
         return "accounting_management";
     }
 

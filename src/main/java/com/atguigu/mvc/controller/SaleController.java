@@ -50,7 +50,8 @@ public class SaleController {
     }
 //    订单修改
     @RequestMapping(value = "/sales_modify", method = RequestMethod.POST)
-    public String modify_sales(Sales sales){
+    public String modify_sales(Sales sales) throws IOException{
+        salesDao.modify(sales);
         return "Sale_list";
     }
 //    订单查询

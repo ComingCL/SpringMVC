@@ -132,9 +132,17 @@
             }
         }
     </script>
+    <script th:inline="javascript">
+        function power()
+        {
+            var power = [[${session.User.userpower}]];
+            if(power>1)
+                document.getElementById("system").style.visibility="hidden";
+        }
+    </script>
 </head>
 
-<body bgcolor="black">
+<body bgcolor="black" onload="power()">
 <div class="banner-w2layouts" style="width:100%; height:105px;" id="home">
     <!--Top-Bar-->
     <div class="header">
@@ -159,7 +167,7 @@
                     <li><a th:href="Sales" class="hvr-underline-from-center scroll scroll">销售管理</a></li>
                     <li><a th:href="stock" class="hvr-underline-from-center scroll scroll">库存管理</a></li>
                     <li><a th:href="accounting_management" class="hvr-underline-from-center scroll scroll">账务管理</a></li>
-                    <li><a th:href="system_management" class="hvr-underline-from-center scroll scroll">系统管理</a></li>
+                    <li><a id="system" th:href="system_management" class="hvr-underline-from-center scroll scroll">系统管理</a></li>
                 </ul>
             </div>
             <div class="clearfix"> </div>

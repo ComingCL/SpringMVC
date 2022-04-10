@@ -34,5 +34,12 @@ public class PurchaseDao {
         PurchaseMapper mapper = sqlSession.getMapper(PurchaseMapper.class);
         mapper.Delete_Purchase(purchaseid);
     }
-//    public
+    public void modify(Purchase purchase) throws IOException{
+        PurchaseMapper mapper = sqlSession.getMapper(PurchaseMapper.class);
+        mapper.Modify_Purchase(purchase);
+    }
+    public List<Purchase> search(String purchasename) throws IOException{
+        PurchaseMapper mapper = sqlSession.getMapper(PurchaseMapper.class);
+        return mapper.Serach_Purchase(purchasename);
+    }
 }

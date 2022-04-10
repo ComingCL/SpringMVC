@@ -13,4 +13,10 @@
         insert into salesorder (salesid, customerid, goodid, salesprice, salestime, amount, isreturn)
         values (null, #{customerid}, #{goodid}, #{salesprice}, #{salestime}, #{amount}, #{isreturn})
     </insert>
+<!--    void Del_Sales(Integer salesid);-->
+    <delete id="Del_Sales">
+        delete from salesorder where salesid = #{salesid};
+        alter table salesorder auto_increment 1;
+    </delete>
+
 </mapper>

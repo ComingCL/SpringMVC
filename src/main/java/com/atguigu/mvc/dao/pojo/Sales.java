@@ -1,43 +1,43 @@
 package com.atguigu.mvc.dao.pojo;
 
 public class Sales {
-    private int salesid;
-    private int customerid;
-    private int goodid;
-    private double salesprice;
+    private Integer salesid;
+    private Integer customerid;
+    private Integer goodid;
+    private Double salesprice;
     private String salestime;
-    private int amount;
-    private int isreturn;
+    private Integer amount;
+    private Integer isreturn;
 
-    public int getSalesid() {
+    public Integer getSalesid() {
         return salesid;
     }
 
-    public void setSalesid(int salesid) {
+    public void setSalesid(Integer salesid) {
         this.salesid = salesid;
     }
 
-    public int getCustomerid() {
+    public Integer getCustomerid() {
         return customerid;
     }
 
-    public void setCustomerid(int customerid) {
+    public void setCustomerid(Integer customerid) {
         this.customerid = customerid;
     }
 
-    public int getGoodid() {
+    public Integer getGoodid() {
         return goodid;
     }
 
-    public void setGoodid(int goodid) {
+    public void setGoodid(Integer goodid) {
         this.goodid = goodid;
     }
 
-    public double getSalesprice() {
+    public Double getSalesprice() {
         return salesprice;
     }
 
-    public void setSalesprice(double salesprice) {
+    public void setSalesprice(Double salesprice) {
         this.salesprice = salesprice;
     }
 
@@ -49,19 +49,19 @@ public class Sales {
         this.salestime = salestime;
     }
 
-    public int getAmount() {
+    public Integer getAmount() {
         return amount;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(Integer amount) {
         this.amount = amount;
     }
 
-    public int getIsreturn() {
+    public Integer getIsreturn() {
         return isreturn;
     }
 
-    public void setIsreturn(int isreturn) {
+    public void setIsreturn(Integer isreturn) {
         this.isreturn = isreturn;
     }
 }

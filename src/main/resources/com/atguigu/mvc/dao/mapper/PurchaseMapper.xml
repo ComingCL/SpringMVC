@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.atguigu.mvc.dao.mapper.PurchaseMapper">
 <!--List<Purchase> Get_Purchase_List();-->
-    <select id="Get_Purchase_List" resultType="Purchase">
+    <select id="Get_Purchase_List" resultType="com.atguigu.mvc.dao.pojo.Purchase">
         select * from purchaseorder;
     </select>
 
@@ -21,6 +21,17 @@
         delete from purchaseorder where purchaseid = #{id};
         alter table purchaseorder auto_increment 1;
     </delete>
-
-
+<!--    void Modify_Purchase(Purchase purchase);-->
+    <update id="Modify_Purchase">
+        update purchaseorder set supplierid = #{supplierid} where purchaseid = #{id} and supplierid is not null;
+        update purchaseorder set goodid = #{goodid} where purchaseid = #{id} and goodid is not null;
+        update purchaseorder set purchaseprice = #{purchaseprice} where purchaseid = #{id} and purchaseprice is not null;
+        update purchaseorder set purchasetime = #{purchasetime} where purchaseid = #{id} and LENGTH(trim(purchasetime)) > 0;
+        update purchaseorder set amount = #{amount} where purchaseid = #{id} and amount is not null;
+        update purchaseorder set isreturn = #{isreturn} where purchaseid = #{id} and isreturn is not null;
+    </update>
+<!--    void Serach_Purchase(String purchasename);-->
+    <select id="Serach_Purchase" resultType="com.atguigu.mvc.dao.pojo.Purchase">
+        select * from purchaseorder where purchasename LIKE CONCAT('%', #{purchasename, jdbcType=VARCHAR}, '%')
+    </select>
 </mapper>

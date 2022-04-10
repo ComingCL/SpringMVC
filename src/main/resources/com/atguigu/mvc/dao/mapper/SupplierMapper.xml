@@ -4,13 +4,32 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.atguigu.mvc.dao.mapper.SupplierMapper">
 <!--    List<Supplier> Get_Supplier_List();-->
-    <select id="Get_Supplier_List" resultType="Supplier">
+    <select id="Get_Supplier_List" resultType="com.atguigu.mvc.dao.pojo.Supplier">
         select * from suppliers;
     </select>
 
 <!--    int Insert_Supplier(Supplier supplier);-->
     <insert id="Insert_Supplier" keyProperty="supplierid">
-        insert into purchaseorder (supplierid, suppliername, telephone, starttime, endtime)
-        values (null, #{supplierid}, #{suppliername}, #{telephone}, #{starttime}, #{endtime})
+        insert into suppliers (supplierid, suppliername, telephone, starttime, endtime)
+        values (null, #{suppliername}, #{telephone}, #{starttime}, #{endtime})
     </insert>
+
+<!--    void del(Integer id);-->
+    <delete id="del">
+        delete from suppliers where supplierid = #{id};
+        alter table suppliers auto_increment 1;
+    </delete>
+
+<!--    void modify(@Param("id") Integer id);-->
+    <update id="modify">
+        update suppliers set suppliername = #{suppliername} where supplierid = #{supplierid} and #{suppliername} is not null;
+        update suppliers set telephone = #{telephone} where telephone = #{telephone} and #{telephone} is not null;
+        update suppliers set starttime = #{starttime} where starttime = #{starttime} and #{starttime} is not null;
+        update suppliers set endtime = #{endtime} where endtime = #{endtime} and #{endtime} is not null;
+    </update>
+
+<!--    Supplier serach(@Param("suppliername") String suppliername);-->
+    <select id="serach" resultType="com.atguigu.mvc.dao.pojo.Supplier">
+        select * from suppliers where suppliername LIKE CONCAT('%', #{suppliername, jdbcType=VARCHAR}, '%')
+    </select>
 </mapper>

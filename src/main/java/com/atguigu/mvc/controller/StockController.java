@@ -26,6 +26,7 @@ public class StockController {
         User user = (User)session.getAttribute("User");
         if(user == null) return "login";
         Collection<Goods> goodsList = goodsDao.getall(request);
+        model.addAttribute("goodsList", goodsList);
         return "stock";
     }
 }

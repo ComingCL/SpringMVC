@@ -21,6 +21,4 @@
         delete from purchaseorder where purchaseid = #{id};
         alter table purchaseorder auto_increment 1;
     </delete>
-
-
 </mapper>

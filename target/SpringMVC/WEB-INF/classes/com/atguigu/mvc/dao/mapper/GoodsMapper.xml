@@ -26,8 +26,9 @@
     resultType: 默认的映射关系
     resultMap: 设置自定义的映射关系
 -->
-    <select id="getGoodsById" resultType="com.atguigu.mvc.dao.pojo.Goods">
-        select * from goods where goodid = 3
+<!--    按照goodname进行模糊查询-->
+    <select id="getGoodsByName" resultType="com.atguigu.mvc.dao.pojo.Goods">
+        select * from goods where goodname LIKE CONCAT('%', #{goodname, jdbcType=VARCHAR}, '%')
     </select>
 <!--    Integer Get_Amount();-->
     <select id="Get_Amount" resultType="Integer">

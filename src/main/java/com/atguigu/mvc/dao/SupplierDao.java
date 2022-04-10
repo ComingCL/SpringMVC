@@ -28,4 +28,22 @@ public class SupplierDao {
         suppliers = mapper.Get_Supplier_List();
         return suppliers;
     }
+//删除
+    public void del(Integer id) throws IOException{
+        sqlSession = SqlSessionUtils.getSqlSession();
+        SupplierMapper mapper = sqlSession.getMapper(SupplierMapper.class);
+        mapper.del(id);
+    }
+//    修改
+    public void modify(Supplier supplier) throws IOException{
+        sqlSession = SqlSessionUtils.getSqlSession();
+        SupplierMapper mapper = sqlSession.getMapper(SupplierMapper.class);
+        mapper.modify(supplier);
+    }
+//    查询
+    public void search(String suppliername) throws IOException{
+        sqlSession = SqlSessionUtils.getSqlSession();
+        SupplierMapper mapper = sqlSession.getMapper(SupplierMapper.class);
+        mapper.serach(suppliername);
+    }
 }

@@ -30,6 +30,6 @@
 
 <!--    Supplier serach(@Param("suppliername") String suppliername);-->
     <select id="serach" resultType="com.atguigu.mvc.dao.pojo.Supplier">
-        select * from suppliers where suppliername LIKE CONCAT('%', #{suppliername, jdbcType=VARCHAR}, '%')
+        select * from suppliers where suppliername LIKE CONCAT('%', #{suppliername}, '%')
     </select>
 </mapper>

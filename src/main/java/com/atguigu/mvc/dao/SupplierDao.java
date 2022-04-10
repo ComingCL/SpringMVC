@@ -41,9 +41,9 @@ public class SupplierDao {
         mapper.modify(supplier);
     }
 //    查询
-    public void search(String suppliername) throws IOException{
+    public List<Supplier> search(String suppliername) throws IOException{
         sqlSession = SqlSessionUtils.getSqlSession();
         SupplierMapper mapper = sqlSession.getMapper(SupplierMapper.class);
-        mapper.serach(suppliername);
+        return mapper.serach(suppliername);
     }
 }

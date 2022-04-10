@@ -46,8 +46,9 @@ public class SupplierController {
     }
 //    查询供应商
     @RequestMapping(value = "/supplier_search", method = RequestMethod.POST)
-    public String supplier_search(String suppliername, HttpServletRequest request) throws IOException{
-        supplierDao.search(suppliername);
-        return "redirect:/supplier";
+    public String supplier_search(String suppliername, Model model) throws IOException{
+        Collection<Supplier> supplierList = supplierDao.search(suppliername);
+        model.addAttribute("supplierList", supplierList);
+        return "Supplier_list";
     }
 }

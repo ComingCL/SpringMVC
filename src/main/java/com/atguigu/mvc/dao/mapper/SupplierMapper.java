@@ -15,5 +15,5 @@ public interface SupplierMapper {
 
     void modify(@Param("supplier") Supplier supplier);
 
-    Supplier serach(@Param("suppliername") String suppliername);
+    List<Supplier> serach(@Param("suppliername") String suppliername);
 }

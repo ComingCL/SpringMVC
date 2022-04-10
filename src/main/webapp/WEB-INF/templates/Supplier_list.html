@@ -58,7 +58,7 @@
         }
     </style>
     <script>
-        //删除供应商
+        //删除供应商(已实现)
         window.delete_Supplier= function() {
             var delete_id = document.getElementById("delete_Supplier_id").value;
             if (delete_id<=0) {
@@ -75,7 +75,7 @@
                 });
             }
         }
-        //增加供应商
+        //增加供应商(已实现)
         window.add_Supplier= function() {
             //#{supplierid}, #{suppliername}, #{telephone}, #{starttime}, #{endtime}
             var add_suppliername= document.getElementById("add_Supplier_name").value;
@@ -96,7 +96,7 @@
                 }
             });
         }
-        //修改供应商
+        //修改供应商(已实现)
         window.modify_Supplier= function() {
             //#{customerid}, #{customername}, #{telephone}, #{starttime}, #{endtime}
             var modify_id = document.getElementById("modify_Supplier_id").value;
@@ -114,7 +114,7 @@
                 }
             });
         }
-        //查询供应商
+        //查询供应商(已实现)
         window.search_Supplier= function() {
             var search_name = document.getElementById("search_Supplier_name").value;
             if (!search_name) {
@@ -152,6 +152,7 @@
             <!-- navbar-header -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
+                    <li><a class="hvr-underline-from-center active scroll" href="#">当前用户: <span th:text="${session.User.username}"></span></a></li>
                     <li><a class="hvr-underline-from-center active scroll" href="#">主页</a></li>
                     <li><a th:href="Goods" class="hvr-underline-from-center scroll">資料管理</a></li>
                     <li><a th:href="Purchase" class="hvr-underline-from-center scroll">采购管理</a></li>

@@ -67,7 +67,7 @@
             } else {
                 $(".delSure").click(function () {
                     $.ajax({
-                        url: "customers_search?search_name="+search_name,//(url常乐来写)
+                        url: "customers_serach?customername="+search_name,//(url常乐来写)
                         type: 'POST',
                         success: function (data) {
                             $("body").html(data);
@@ -76,7 +76,7 @@
                 });
             }
         }
-        //删除用户
+        //删除用户(已实现)
         window.delete_Customer= function() {
             var delete_id = document.getElementById("delete").value;
             //Uncaught TypeError: Cannot read properties of null (reading 'hide')出现这个错误修改一下变量名字（真无语。。。。）
@@ -94,7 +94,7 @@
                 });
             }
         }
-        //增加用户
+        //增加用户(已实现)
         window.add_Customer= function() {
             //#{customername}, #{telephone}, #{starttime}, #{endtime}
             var add_name = document.getElementById("add_Customer_name").value;
@@ -120,7 +120,7 @@
             var modify_starttime = document.getElementById("modify_Customer_starttime").value;
             var modify_endtime= document.getElementById("modify_Customer_endtime").value;
             $.ajax({
-                url: "goods_add",//(url常乐来写)
+                url: "customers_modify",//(url常乐来写)
                 type: 'POST',
                 data:{"customerid":modify_id,"customername":modify_name,
                       "telephone":modify_telephone,"starttime":modify_starttime,"endtime":modify_endtime},
@@ -150,6 +150,7 @@
             <!-- navbar-header -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
+                    <li><a class="hvr-underline-from-center active scroll" href="#">当前用户: <span th:text="${session.User.username}"></span></a></li>
                     <li><a class="hvr-underline-from-center active scroll" th:href="homepage">主页</a></li>
                     <li><a th:href="Goods" class="hvr-underline-from-center scroll">资料管理</a></li>
                     <li><a th:href="Purchase" class="hvr-underline-from-center scroll">采购管理</a></li>

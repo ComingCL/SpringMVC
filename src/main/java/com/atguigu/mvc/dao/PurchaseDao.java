@@ -38,8 +38,8 @@ public class PurchaseDao {
         PurchaseMapper mapper = sqlSession.getMapper(PurchaseMapper.class);
         mapper.Modify_Purchase(purchase);
     }
-    public List<Purchase> search(String purchasename) throws IOException{
+    public List<Purchase> search(Integer goodid) throws IOException{
         PurchaseMapper mapper = sqlSession.getMapper(PurchaseMapper.class);
-        return mapper.Serach_Purchase(purchasename);
+        return mapper.Serach_Purchase(goodid);
     }
 }

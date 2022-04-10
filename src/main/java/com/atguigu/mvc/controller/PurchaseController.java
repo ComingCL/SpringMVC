@@ -54,8 +54,8 @@ public class PurchaseController {
     }
 //    查询订单
     @RequestMapping(value = "/Purchase_search", method = RequestMethod.POST)
-    public String Purchase_search(String purchasename, Model model) throws IOException{
-        List<Purchase> purchaseList = purchaseDao.search(purchasename);
+    public String Purchase_search(Integer goodid, Model model) throws IOException{
+        List<Purchase> purchaseList = purchaseDao.search(goodid);
         model.addAttribute("purchaseList", purchaseList);
         return "Purchase_list";
     }

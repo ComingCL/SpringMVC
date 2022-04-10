@@ -32,6 +32,6 @@
     </update>
 <!--    void Serach_Purchase(String purchasename);-->
     <select id="Serach_Purchase" resultType="com.atguigu.mvc.dao.pojo.Purchase">
-        select * from purchaseorder where purchasename LIKE CONCAT('%', #{purchasename, jdbcType=VARCHAR}, '%')
+        select * from purchaseorder where goodid = #{goodid}
     </select>
 </mapper>

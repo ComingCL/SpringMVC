@@ -12,5 +12,5 @@ public interface PurchaseMapper {
 
     void Modify_Purchase(Purchase purchase);
 
-    List<Purchase> Serach_Purchase(@Param("purchasename") String purchasename);
+    List<Purchase> Serach_Purchase(@Param("goodid") Integer goodid);
 }

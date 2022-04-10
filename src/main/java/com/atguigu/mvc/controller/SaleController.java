@@ -58,7 +58,7 @@ public class SaleController {
     @RequestMapping(value = "/sales_search", method = RequestMethod.POST)
     public String sales_search(Integer goodid, Model model) throws IOException{
         List<Sales> salesList = salesDao.Search(goodid);
-        model.addAttribute("sakesList", salesList);
+        model.addAttribute("salesList", salesList);
         return "Sales_list";
     }
 }

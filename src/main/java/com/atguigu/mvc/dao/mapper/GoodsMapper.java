@@ -19,9 +19,12 @@ public interface GoodsMapper {
     /**
      * 修改商品信息
      */
-    void Update_Goods();
+    void Update_Goods(@Param("goodid") Integer goodid,
+                      @Param("goodname") String goodname,
+                      @Param("amount") Integer amount);
     /**
      * 根据名字查询商品信息
      */
-    Goods getGoodsByName(@Param("goodname") String goodname);
+    List<Goods> getGoodsByName(@Param("goodname") String goodname);
+
 }

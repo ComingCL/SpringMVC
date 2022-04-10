@@ -13,7 +13,11 @@ public interface SupplierMapper {
 
     void del(@Param("id") Integer id);
 
-    void modify(@Param("supplier") Supplier supplier);
+    void modify(@Param("supplierid") Integer supplierid,
+                @Param("suppliername") String suppliername,
+                @Param("telephone") String telephone,
+                @Param("starttime") String starttime,
+                @Param("endtime") String endtime);
 
     List<Supplier> serach(@Param("suppliername") String suppliername);
 }

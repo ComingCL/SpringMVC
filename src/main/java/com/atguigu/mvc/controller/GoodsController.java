@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Collection;
+import java.util.List;
 
 @Controller
 public class GoodsController {
@@ -34,12 +35,13 @@ public class GoodsController {
     public String goods_add(){
         return "goods_add";
     }
+//    商品增加
     @RequestMapping(value = "/Goods_save", method = RequestMethod.POST)
     public String addgoods(Goods goods) throws IOException {
         goodsDao.save(goods);
         return "redirect:/Goods";
     }
-
+//    商品删除
     @RequestMapping(value = "/goods_delete" ,method = RequestMethod.POST)
     public String deleteGoods(Integer id) throws IOException{
         goodsDao.delete(id);
@@ -50,4 +52,19 @@ public class GoodsController {
         request.getSession().setAttribute("totamount", amount);
         return "system_management";
     }
+
+//    商品修改
+    @RequestMapping(value = "/goods_change", method = RequestMethod.POST)
+    public String goods_change(Integer goodid, String goodname, Integer amount){
+        goodsDao.modify(goodid, goodname, amount);
+        return "redirect:/Goods";
+    }
+//    商品查询
+    @RequestMapping(value = "/goods_search", method = RequestMethod.POST)
+    public String goods_search(String goodname, Model model) throws IOException{
+        List<Goods> goodsList = goodsDao.Serach(goodname);
+        model.addAttribute("goodsList", goodsList);
+        return "Goods_list";
+    }
+
 }

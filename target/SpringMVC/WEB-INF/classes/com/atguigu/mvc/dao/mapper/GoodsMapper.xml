@@ -11,9 +11,12 @@
     <select id="Insert_Goods" resultType="com.atguigu.mvc.dao.pojo.Goods">
         insert into goods (goodid, goodname, amount) values (null, #{goodname}, #{amount})
     </select>
-<!--    void Update_Goods(Integer id);-->
+<!--    void Update_Goods(@Param("goodid") Integer goodid,-->
+<!--    @Param("goodname") String goodname,-->
+<!--    @Param("amount") Integer amount);-->
     <update id="Update_Goods">
-        update goods set goodname = '牛奶' where goodid = 4
+        update goods set goodname = #{goodname} where goodid = #{goodid} and LENGTH(trim(#{goodname})) > 0;
+        update goods set amount = #{amount} where goodid = #{goodid} and amount is not null;
     </update>
 <!--    void Delete_Goods(Integer id);-->
     <delete id="Delete_Goods">
@@ -34,4 +37,6 @@
     <select id="Get_Amount" resultType="Integer">
         select sum(amount) from goods
     </select>
+
 </mapper>
+

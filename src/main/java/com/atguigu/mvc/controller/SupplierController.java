@@ -40,8 +40,12 @@ public class SupplierController {
     }
 //    修改供应商
     @RequestMapping(value = "/supplier_change", method = RequestMethod.POST)
-    public String supplier_change(Supplier supplier) throws IOException{
-        supplierDao.modify(supplier);
+    public String supplier_change(Integer supplierid,
+                                  String suppliername,
+                                  String telephone,
+                                  String starttime,
+                                  String endtime) throws IOException{
+        supplierDao.modify(supplierid, suppliername, telephone, starttime, endtime);
         return "redirect:/supplier";
     }
 //    查询供应商

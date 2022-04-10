@@ -22,14 +22,14 @@
 
 <!--    void modify(@Param("id") Integer id);-->
     <update id="modify">
-        update suppliers set suppliername = #{suppliername} where supplierid = #{supplierid} and #{suppliername} is not null;
-        update suppliers set telephone = #{telephone} where telephone = #{telephone} and #{telephone} is not null;
-        update suppliers set starttime = #{starttime} where starttime = #{starttime} and #{starttime} is not null;
-        update suppliers set endtime = #{endtime} where endtime = #{endtime} and #{endtime} is not null;
+        update suppliers set suppliername = #{suppliername} where supplierid = #{supplierid} and LENGTH(trim(#{suppliername})) > 0;
+        update suppliers set telephone = #{telephone} where supplierid = #{supplierid} and LENGTH(trim(#{telephone})) > 0;
+        update suppliers set starttime = #{starttime} where supplierid = #{supplierid} and LENGTH(trim(#{starttime})) > 0;
+        update suppliers set endtime = #{endtime} where supplierid = #{supplierid} and LENGTH(trim(#{endtime})) > 0;
     </update>
 
 <!--    Supplier serach(@Param("suppliername") String suppliername);-->
     <select id="serach" resultType="com.atguigu.mvc.dao.pojo.Supplier">
-        select * from suppliers where suppliername LIKE CONCAT('%', #{suppliername}, '%')
+        select * from suppliers where suppliername LIKE CONCAT('%', #{suppliername, jdbcType=VARCHAR}, '%')
     </select>
 </mapper>

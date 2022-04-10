@@ -37,8 +37,15 @@ public class GoodsDao {
         GoodsMapper mapper = sqlSession.getMapper(GoodsMapper.class);
         mapper.Delete_Goods(id);
     }
-    public Goods Serach(String goodname)throws IOException{
+
+//    商品查询
+    public List<Goods> Serach(String goodname)throws IOException{
         GoodsMapper mapper = sqlSession.getMapper(GoodsMapper.class);
         return mapper.getGoodsByName(goodname);
+    }
+//    商品修改
+    public void modify(Integer goodid, String goodname, Integer amount){
+        GoodsMapper mapper = sqlSession.getMapper(GoodsMapper.class);
+        mapper.Update_Goods(goodid, goodname, amount);
     }
 }

@@ -35,10 +35,14 @@ public class SupplierDao {
         mapper.del(id);
     }
 //    修改
-    public void modify(Supplier supplier) throws IOException{
+    public void modify(Integer supplierid,
+                       String suppliername,
+                       String telephone,
+                       String starttime,
+                       String endtime) throws IOException{
         sqlSession = SqlSessionUtils.getSqlSession();
         SupplierMapper mapper = sqlSession.getMapper(SupplierMapper.class);
-        mapper.modify(supplier);
+        mapper.modify(supplierid, suppliername, telephone, starttime, endtime);
     }
 //    查询
     public List<Supplier> search(String suppliername) throws IOException{

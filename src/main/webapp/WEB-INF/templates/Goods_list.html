@@ -102,7 +102,7 @@
             var add_id= document.getElementById("modify_Goods_id").value;//getElementById用于根据input标签的id值获得对应input标签中的值
             var add_name = document.getElementById("modify_Goods_name").value;
             $.ajax({
-                url: "goods_add",//向Controller中的@RequestMapping(value = "/goods_add")对应的方法传参数
+                url: "goods_change",//向Controller中的@RequestMapping(value = "/goods_add")对应的方法传参数
                 type: 'POST',
                 data:{"id":add_id,"goodname":add_name},//参数的名字叫id和goodname对应于GoodsMapper.xml中的参数名
                 success: function (data) {

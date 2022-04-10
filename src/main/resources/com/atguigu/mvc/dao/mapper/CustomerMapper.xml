@@ -11,9 +11,12 @@
     <select id="Insert_Customers" resultType="com.atguigu.mvc.dao.pojo.Customer">
         insert into customers (customerid, customername, telephone, starttime, endtime) values (null, #{customername}, #{telephone}, #{starttime}, #{endtime})
     </select>
-<!--    void Update_Customer();-->
+<!--    void Update_Customer(Customer customer);-->
     <update id="Update_Customer">
-        update customers set customername = #{customername} and telephone = #{telephone} and starttime = #{starttime} and endtime = #{endtime} where customerid = #{customerid}
+        update customers set customername = #{customername} where customerid = #{customerid} and LENGTH(trim(#{customername})) > 0;
+        update customers set telephone = #{telephone} where customerid = #{customerid} and LENGTH(trim(#{telphone})) > 0;
+        update customers set starttime = #{starttime} where customerid = #{customerid} and LENGTH(trim(#{starttime})) > 0;
+        update customers set endtime = #{endttime} where customerid = #{customerid} and LENGTH(trim(#{endtime})) > 0;
     </update>
 <!--    void Delete_Customers(@Param("id") Integer id);-->
     <delete id="Delete_Customers">
@@ -21,7 +24,7 @@
         alter table customers auto_increment 1;
     </delete>
 
-<!--    Goods getCustomersById();-->
+<!--    List<Customer> getCustomersByName(@Param("customername") String customername);-->
     <select id="getCustomersByName" resultType="com.atguigu.mvc.dao.pojo.Customer">
         select * from customers where customername LIKE CONCAT('%', #{customername, jdbcType=VARCHAR}, '%')
     </select>

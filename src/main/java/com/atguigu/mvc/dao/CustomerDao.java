@@ -25,7 +25,6 @@ public class CustomerDao {
     }
 
     public Collection<Customer> getall() throws IOException {
-//        先这样写着吧, 必须要重新获取
         sqlSession = SqlSessionUtils.getSqlSession();
         CustomerMapper mapper = sqlSession.getMapper(CustomerMapper.class);
         customers = mapper.get_customer_list();
@@ -34,5 +33,14 @@ public class CustomerDao {
     public void delete(Integer id) throws IOException{
         CustomerMapper mapper = sqlSession.getMapper(CustomerMapper.class);
         mapper.Delete_Customers(id);
+    }
+
+    public void modify(Customer customer) throws IOException{
+        CustomerMapper mapper = sqlSession.getMapper(CustomerMapper.class);
+        mapper.Update_Customer(customer);
+    }
+    public List<Customer> serach(String customername) throws IOException{
+        CustomerMapper mapper = sqlSession.getMapper(CustomerMapper.class);
+        return mapper.getCustomersByName(customername);
     }
 }

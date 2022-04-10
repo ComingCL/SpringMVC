@@ -30,8 +30,9 @@ public class PurchaseDao {
         purchases = mapper.Get_Purchase_List();
         return purchases;
     }
-    public void del(Purchase purchase) throws IOException{
+    public void del(Integer purchaseid) throws IOException{
         PurchaseMapper mapper = sqlSession.getMapper(PurchaseMapper.class);
-
+        mapper.Delete_Purchase(purchaseid);
     }
+//    public
 }

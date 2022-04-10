@@ -12,6 +12,6 @@ public interface CustomerMapper {
     Customer Insert_Customers(Customer customer);
     void Delete_Customers(@Param("id") Integer id);
 
-    void Update_Customer();
-    Goods getCustomersByName(@Param("customername") String customername);
+    void Update_Customer(Customer customer);
+    List<Customer> getCustomersByName(@Param("customername") String customername);
 }

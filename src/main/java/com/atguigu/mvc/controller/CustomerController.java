@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Collection;
+import java.util.List;
 
 @Controller
 public class CustomerController {
@@ -35,15 +36,29 @@ public class CustomerController {
     public String goods_add(){
         return "customers_add";
     }
+//    添加客户
     @RequestMapping(value = "/Customers_save", method = RequestMethod.POST)
     public String addgoods(Customer customer) throws IOException {
         customerDao.save(customer);
         return "redirect:/Customer";
     }
-
+//    删除客户
     @RequestMapping(value = "/customers_delete" ,method = RequestMethod.POST)
     public String deleteGoods(Integer id) throws IOException{
         customerDao.delete(id);
         return "redirect:/Customer";
+    }
+//    修改客户
+    @RequestMapping(value = "/customers_modify", method = RequestMethod.POST)
+    public String modifyCustomers(Customer customer) throws IOException{
+        customerDao.modify(customer);
+        return "redirect:/Customer";
+    }
+//    查询客户
+    @RequestMapping(value = "/customers_serach", method = RequestMethod.POST)
+    public String customer_search(String customername, Model model) throws IOException{
+        List<Customer> customerList = customerDao.serach(customername);
+        model.addAttribute("customersList", customerList);
+        return "Customer_list";
     }
 }

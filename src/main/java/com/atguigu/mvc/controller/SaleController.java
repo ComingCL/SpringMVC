@@ -35,6 +35,7 @@ public class SaleController {
     public String sales_add(){
         return "Sales_add";
     }
+
     @RequestMapping(value = "/sales_save", method = RequestMethod.POST)
     public String addsales(Sales sales) throws IOException {
         salesDao.save(sales);

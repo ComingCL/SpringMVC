@@ -8,4 +8,5 @@ public interface PurchaseMapper {
     List<Purchase> Get_Purchase_List();
     int Insert_Purchase(Purchase purchase);
     void Delete_Purchase(Integer id);
+
 }

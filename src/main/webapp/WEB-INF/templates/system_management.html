@@ -3,22 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <title>系统管理</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+    function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- //for-mobile-apps -->
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all">
+    <!--web-fonts-->
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+    <style>
+		input::-ms-input-placeholder{
+	 	
+        color:#FFFFFF;
+        font-size: 15px;
+    }
+	</style>
 </head>
-<body>
-<p>当前用户: <span th:text="${session.User.username}"></span></p>
-<a th:href="logout">退出登录</a>
-<form th:action="@{/modify}" method="post">
-    设置库存总量: <label>
-    <input type="text" name="amount">
-</label>
-    <input type="submit" value="修改"/>
-</form>
+<body style="background:url(images/bann5.jpg);background-attachment:fixed">
+<div class="banner-w2layouts" style="width:100%; height:105px;" id="home">
+		<!--Top-Bar-->
+	<div class="header">
+		<nav class="navbar navbar-default">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<h1><a  th:href="index">DHU</a></h1>
+					</div>
 
-<form th:action="@{/change_password}" method="post">
-    修改密码:
-    <input type="text" name="password">
-    </label>
-    <input type="submit" value="修改">
-</form>
+					<!-- navbar-header -->
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                        <li><a class="hvr-underline-from-center active scroll" href="#">当前用户: <span th:text="${session.User.username}"></span></a></li>
+                            <li><a class="hvr-underline-from-center active scroll" href="#">主页</a></li>
+                            <li><a th:href="Goods" class="hvr-underline-from-center scroll">资料管理</a></li>
+                            <li><a th:href="Purchase" class="hvr-underline-from-center scroll">采购管理</a></li>
+                            <li><a th:href="Sales" class="hvr-underline-from-center scroll scroll">销售管理</a></li>
+                            <li><a th:href="stock" class="hvr-underline-from-center scroll scroll">库存管理</a></li>
+                            <li><a th:href="accounting_management" class="hvr-underline-from-center scroll scroll">账务管理</a></li>
+                            <li><a th:href="system_management" class="hvr-underline-from-center scroll scroll">系统管理</a></li>
+                        </ul>
+					</div>
+					<div class="clearfix"> </div>	
+		</nav>
+	</div>	
+</div>
+<div>
+<div class="col-md-5 banner-form-agileinfo" style="float:inherit">
+		<form th:action="@{/modify}" method="post">
+			<b style="color:#FFFFFF">设置库存总量:</b><input  type="text" class="email" name="amount"  placeholder="请在这里设置库存数量" required=""/>
+            <input type="submit" class="hvr-shutter-in-vertical" value="修改"> 
+		</form>
+		<form th:action="@{/change_password}" method="post">
+			<b style="color:#FFFFFF">修改密码:</b><input type="password" class="password" name="password"  placeholder="请在这里修改密码" required=""/>
+            <input type="submit" class="hvr-shutter-in-vertical" value="修改">  	
+		</form>
+</div>
+<dt style="font-size:14px; text-align:center; ">
+<a  class="btn btn-default btn-sm" style=" text-align:center; margin-top:3cm; "th:href="logout"><span class="glyphicon glyphicon-off"></span>退出登录</a>
+</dt>
+<br><br><br><br><br><br><br><br>
+</div>
 </body>
 </html>

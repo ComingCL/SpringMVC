@@ -89,7 +89,7 @@ CREATE TABLE `salesorder` (
   `isreturn` int NOT NULL DEFAULT '1',
   PRIMARY KEY (`salesid`),
   KEY `goodid` (`goodid`),
-  CONSTRAINT `goodid` FOREIGN KEY (`goodid`) REFERENCES `goods` (`goodid`),
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  CONSTRAINT `goodid2` FOREIGN KEY (`goodid`) REFERENCES `goods` (`goodid`)
+);
 
 ```

@@ -55,11 +55,11 @@
 }
 </style>
     <script>
-        //根据商品名查询商品
+        //根据商品名查询商品(已实现)
         window.search_Goods= function() {
             var search_name = document.getElementById("search_Goods_name").value;
             $.ajax({
-                url: "goods_add",//常乐来写
+                url: "goods_search",//常乐来写
                 type: 'POST',
                 data:{"goodname":search_name},
                 success: function (data) {
@@ -67,7 +67,7 @@
                 }
             });
         }
-        //删除商品
+        //删除商品(已实现)
         window.delete_Goods= function() {
             var delete_id = document.getElementById("delete_Goods_id").value;
             if (delete_id<=0) {
@@ -84,7 +84,7 @@
                 });
             }
         }
-        //增加商品
+        //增加商品(已实现)
         window.add_Goods= function() {
             var add_name = document.getElementById("add_Goods_name").value;
             var add_amount= document.getElementById("add_Goods_amount").value;
@@ -97,14 +97,17 @@
                 }
             });
         }
-        //修改商品
+        //修改商品(已实现)
         window.modify_Goods= function() {
-            var add_id= document.getElementById("modify_Goods_id").value;//getElementById用于根据input标签的id值获得对应input标签中的值
-            var add_name = document.getElementById("modify_Goods_name").value;
+            //update goods set goodname = #{goodname} where goodid = #{goodid} and LENGTH(trim(#{goodname})) > 0;
+            // update goods set amount = #{amount} where goodid = #{goodid} and amount is not null;
+            var add_goodid= document.getElementById("modify_Goods_id").value;//getElementById用于根据input标签的id值获得对应input标签中的值
+            var add_goodname = document.getElementById("modify_Goods_name").value;
+            var add_amount = document.getElementById("modify_Goods_amount").value;
             $.ajax({
-                url: "goods_change",//向Controller中的@RequestMapping(value = "/goods_add")对应的方法传参数
+                url: "goods_change",
                 type: 'POST',
-                data:{"id":add_id,"goodname":add_name},//参数的名字叫id和goodname对应于GoodsMapper.xml中的参数名
+                data:{"goodid":add_goodid,"goodname":add_goodname,"amount":add_amount},//参数的名字叫id和goodname对应于GoodsMapper.xml中的参数名
                 success: function (data) {
                     $("body").html(data);
                 }
@@ -131,7 +134,8 @@
 					<!-- navbar-header -->
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a class="hvr-underline-from-center active scroll" href="#">主页</a></li>
+                            <li><a class="hvr-underline-from-center active scroll" href="#">当前用户: <span th:text="${session.User.username}"></span></a></li>
+                            <li><a class="hvr-underline-from-center active scroll" th:href="homepage">主页</a></li>
                             <li><a th:href="Goods" class="hvr-underline-from-center scroll">资料管理</a></li>
                             <li><a th:href="Purchase" class="hvr-underline-from-center scroll">采购管理</a></li>
                             <li><a th:href="Sales" class="hvr-underline-from-center scroll scroll">销售管理</a></li>
@@ -178,7 +182,7 @@
         </table>
     </div>
 </form>
-<!-- 删除商品模态框 -->
+<!-- 查询商品模态框 -->
 <div class="modal" id="search_goods" style="background:url(images/bann5.jpg)">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -273,6 +277,9 @@
                 <br>
                 <label style="float: left; margin-top:0.15cm; margin-left:0.1cm" for="modify_Goods_name">商品名:</label>
                 <input type="text" style="float:left; color: #000000" class="form-control" id="modify_Goods_name" placeholder="请在这里输入商品名">
+                <br>
+                <label style="float: left; margin-top:0.15cm; margin-left:0.1cm" for="modify_Goods_amount">商品数量:</label>
+                <input type="text" style="float:left; color: #000000" class="form-control" id="modify_Goods_amount" placeholder="请在这里输入商品数量">
             </div>
             <br>
             <!-- 模态页脚 -->

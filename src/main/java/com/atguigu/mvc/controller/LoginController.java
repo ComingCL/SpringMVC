@@ -45,8 +45,6 @@ public class LoginController {
     public String Login(){
         return "login";
     }
-    @RequestMapping("/accounting_management")
-    public String accounting_management(){return "accounting_management";}
     @RequestMapping("/system_management")
     public String system_management(HttpServletRequest request){
         HttpSession session = request.getSession();

@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.atguigu.mvc.dao.mapper.SalesMapper">
 <!--    List<Sales> get_sales_list();-->
-    <select id="get_sales_list" resultType="Sales">
+    <select id="get_sales_list" resultType="com.atguigu.mvc.dao.pojo.Sales">
         select * from salesorder;
     </select>
 
@@ -18,5 +18,17 @@
         delete from salesorder where salesid = #{salesid};
         alter table salesorder auto_increment 1;
     </delete>
-
+<!--    List<Sales> Search_Sale(String salesname);-->
+    <select id="Search_Sale" resultType="com.atguigu.mvc.dao.pojo.Sales">
+        select * from salesorder where goodid = #{goodid}
+    </select>
+<!--    void modify(Sales sales);-->
+    <update id="modify">
+        update salesorder set customerid = #{customerid} where salesid = #{salesid} and customerid is not null;
+        update salesorder set goodid = #{goodid} where salesid = #{salesid} and goodid is not null;
+        update salesorder set salesprice = #{salesprice} where salesid = #{salesid} and salesprice is not null;
+        update salesorder set salestime = #{salestime} where salesid = #{salesid} and salestime is not null;
+        update salesorder set amount = #{amount} where salesid = #{salesid} and amount is not null;
+        update salesorder set isreturn = #{isreturn} where salesid = #{salesid} and isreturn is not null;
+    </update>
 </mapper>

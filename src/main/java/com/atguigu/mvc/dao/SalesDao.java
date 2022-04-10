@@ -33,4 +33,8 @@ public class SalesDao {
         mapper.Del_Sales(salesid);
     }
 
+    public List<Sales> Search(Integer goodid) throws IOException{
+        SalesMapper mapper = sqlSession.getMapper(SalesMapper.class);
+        return mapper.Search_Sale(goodid);
+    }
 }

@@ -11,4 +11,7 @@ public interface SalesMapper {
 
     void Del_Sales(Integer salesid);
 
+    List<Sales> Search_Sale(Integer goodid);
+
+    void modify(Sales sales);
 }

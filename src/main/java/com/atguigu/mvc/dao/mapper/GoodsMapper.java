@@ -13,7 +13,6 @@ public interface GoodsMapper {
 
     /**
      * 删除商品信息
-     * @param id
      */
     void Delete_Goods(@Param("id") Integer id);
     /**

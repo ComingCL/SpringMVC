@@ -79,5 +79,17 @@ INSERT INTO `purchaseorder` VALUES ('4', '2', '2', '50.00', '2022-03-09', '30', 
 INSERT INTO `purchaseorder` VALUES ('5', '2', '3', '72.00', '2022-03-10', '20', '1');
 INSERT INTO `purchaseorder` VALUES ('6', '3', '4', '80.00', '2022-03-17', '30', '1');
 
+CREATE TABLE `salesorder` (
+  `salesid` int NOT NULL AUTO_INCREMENT,
+  `customerid` int NOT NULL,
+  `goodid` int NOT NULL,
+  `salesprice` decimal(8,2) NOT NULL,
+  `salestime` date NOT NULL,
+  `amount` int NOT NULL,
+  `isreturn` int NOT NULL DEFAULT '1',
+  PRIMARY KEY (`salesid`),
+  KEY `goodid` (`goodid`),
+  CONSTRAINT `goodid` FOREIGN KEY (`goodid`) REFERENCES `goods` (`goodid`),
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 ```

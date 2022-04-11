@@ -112,18 +112,41 @@
         }
     </script>
     <script th:inline="javascript">
+        window.search_Goods_byname= function() {
+            var search_name = document.getElementById("search_Goods_name").value;
+            $.ajax({
+                url: "goods_search",//常乐来写
+                type: 'POST',
+                data:{"goodname":search_name},
+                success: function (data) {
+                    $("body").html(data);
+                }
+            });
+        }
         function myFunc()
         {
             var amount = [[${session.amount}]];
             var totamount = [[${session.totamount}]];
-            if(amount>totamount)
+            if(amount>totamount) {
+                document.getElementById("current_stock").style.color = "#ff0202";
                 alert("超出库存警告");
+            }
         }
         function power()
         {
             var power = [[${session.User.userpower}]];
-            if(power>1)
-                document.getElementById("system").style.visibility="hidden";;
+            var  isWrong= [[${isWrong}]];
+            document.getElementById("error").style.visibility = "hidden";;
+            if(power>1) {
+                document.getElementById("system").style.display = "none";
+                document.getElementById("current_user").style.color = "#01fc72";
+            }
+            else{
+                document.getElementById("current_user").style.color = "#8502fa";
+            }//设置当前用户的字体颜色
+            if(!isWrong) {
+                document.getElementById("error").style.visibility = "visible";;
+            }
         }
     </script>
 </head>
@@ -145,7 +168,8 @@
 					<!-- navbar-header -->
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a class="hvr-underline-from-center active scroll" href="#">当前用户: <span th:text="${session.User.username}"></span></a></li>
+                            <li><a id="current_user" class="hvr-underline-from-center active scroll" href="#">当前用户: <span th:text="${session.User.username}"></span></a></li>
+                            <li><a class="hvr-underline-from-center scroll scroll" th:href="logout"> 退出登录</a></li>
                             <li><a class="hvr-underline-from-center active scroll" th:href="homepage">主页</a></li>
                             <li><a th:href="Goods" class="hvr-underline-from-center scroll">资料管理</a></li>
                             <li><a th:href="Purchase" class="hvr-underline-from-center scroll">采购管理</a></li>
@@ -161,25 +185,26 @@
 </div>
 <form class="form-inline">
     <div class="form-group" style="display:inline">
-        <label style="float: left; margin-top:0.15cm; margin-left:0.1cm" for="exampleInputName2">商品名：</label>
-        <input type="text" style="float: left" class="form-control" id="exampleInputName2" name ="goodname" placeholder="请输入商品名" onFocus="if(placeholder == '请输入商品名'){placeholder = ''}" onBlur="if (placeholder == ''){placeholder = '请输入商品名'}"/>>
+        <label style="float: left; margin-top:0.15cm; margin-left:0.1cm" for="search_Goods_name">商品名：</label>
+        <input type="text" style="float: left; color: #000000" class="form-control" id="search_Goods_name" name ="goodname" placeholder="请输入商品名" onFocus="if(placeholder == '请输入商品名'){placeholder = ''}" onBlur="if (placeholder == ''){placeholder = '请输入商品名'}"/>>
     </div>
     <div style="display:inline">
-        <button id="first" onClick="window.location.href = 'https://www.baidu.com/'" class="btn btn-default" style="float:left;margin-top:0.05cm"><span class="glyphicon glyphicon-search"></span>查询</button>
+        <button onclick="search_Goods_byname()" class="btn btn-default" style="float:left;margin-top:0.05cm"><span class="glyphicon glyphicon-search"></span>查询</button>
     </div>
+    <p id ="error" style="float: right;color: red">数据异常</p>
 </form>
 <br><br>
 <div class="table-responsive">
 <table border="1" class="table table-hover">
-    <caption>库存管理</caption>
+    <caption style="text-align: center">库存管理</caption>
     <tr><th>商品编号</th><th>商品名</th><th>库存数量</th></tr>
-    <tr th:each="stock : ${stockHashMap.values}">
-        <td th:text="${stock.goodid}"></td>
-        <td th:text="${stock.goodname}"></td>
-        <td th:text="${stock.amount}"></td>
+    <tr th:each="goods : ${goodsList}">
+        <td th:text="${goods.goodid}"></td>
+        <td th:text="${goods.goodname}"></td>
+        <td th:text="${goods.amount}"></td>
 
     </tr>
-    当前库存/库存总量: <a th:text="${session.amount}"></a>/
+    当前库存/库存总量: <a id="current_stock" th:text="${session.amount}"></a>/
     <a th:text="${session.totamount}"></a>
 </table>
 </div>

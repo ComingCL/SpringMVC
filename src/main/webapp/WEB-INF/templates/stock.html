@@ -173,10 +173,10 @@
 <table border="1" class="table table-hover">
     <caption>库存管理</caption>
     <tr><th>商品编号</th><th>商品名</th><th>库存数量</th></tr>
-    <tr th:each="goods : ${goodsList}">
-        <td th:text="${goods.goodid}"></td>
-        <td th:text="${goods.goodname}"></td>
-        <td th:text="${goods.amount}"></td>
+    <tr th:each="stock : ${stockHashMap.values}">
+        <td th:text="${stock.goodid}"></td>
+        <td th:text="${stock.goodname}"></td>
+        <td th:text="${stock.amount}"></td>
 
     </tr>
     当前库存/库存总量: <a th:text="${session.amount}"></a>/

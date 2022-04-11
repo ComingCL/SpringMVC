@@ -8,6 +8,12 @@ public class Goods implements Serializable {
     private String goodname;
     private int amount;
 
+    public Goods(int goodid, String goodname, int amount) {
+        this.goodid = goodid;
+        this.goodname = goodname;
+        this.amount = amount;
+    }
+
     public int getGoodid() {
         return goodid;
     }

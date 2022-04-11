@@ -125,6 +125,9 @@
             var power = [[${session.User.userpower}]];
             if(power>1) {
                 document.getElementById("system").style.display = "none";
+                document.getElementById("btn1").style.display = "none";
+                document.getElementById("btn2").style.display = "none";
+                document.getElementById("btn3").style.display = "none";
                 document.getElementById("current_user").style.color = "#01fc72";
             }
             else{
@@ -170,9 +173,9 @@
 <form class="form-inline" >
     <div style="display:inline">
         <a  class="btn btn-default btn-sm" style="float:right" data-bs-toggle="modal" data-bs-target="#search_goods"><span class="glyphicon glyphicon-search"></span> 查询</a>
-        <a  class="btn btn-default btn-sm" style="float:right" data-bs-toggle="modal" data-bs-target="#add_goods"><span class="glyphicon glyphicon-plus"></span> 增加</a>
-        <a  class="btn btn-default btn-sm" style="float:right" data-bs-toggle="modal" data-bs-target="#delete_goods"><span class="glyphicon glyphicon-remove"></span> 删除</a>
-        <a  class="btn btn-default btn-sm" style="float:right" data-bs-toggle="modal" data-bs-target="#modify_goods"><span class="glyphicon glyphicon-pencil"></span> 修改</a>
+        <a  id="btn1" class="btn btn-default btn-sm" style="float:right" data-bs-toggle="modal" data-bs-target="#add_goods"><span class="glyphicon glyphicon-plus"></span> 增加</a>
+        <a  id="btn2" class="btn btn-default btn-sm" style="float:right" data-bs-toggle="modal" data-bs-target="#delete_goods"><span class="glyphicon glyphicon-remove"></span> 删除</a>
+        <a  id="btn3" class="btn btn-default btn-sm" style="float:right" data-bs-toggle="modal" data-bs-target="#modify_goods"><span class="glyphicon glyphicon-pencil"></span> 修改</a>
         <div class="dropdown" style="float: left">
             <button class="btn btn-default" style="float:right"><span class="glyphicon glyphicon-th"></span></button>
             <div class="dropdown-content">

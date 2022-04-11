@@ -11,7 +11,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import java.io.IOException;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 
@@ -52,5 +51,4 @@ public class StockDao {
         }
         return stockHashMap;
     }
-
 }

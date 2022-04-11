@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 
 @Controller
 public class StockController {
@@ -39,6 +40,22 @@ public class StockController {
         request.getSession().setAttribute("amount", amount);
         model.addAttribute("stockHashMap", stockHashMap);
         model.addAttribute("isWrong", isWrong);
+        return "stock";
+    }
+
+    @RequestMapping(value = "/search_stock", method = RequestMethod.POST)
+    public String search_stock(String goodname, Model model){
+        HashMap<Integer, Goods> stockHashMap = (HashMap<Integer, Goods>) model.getAttribute("stockHashMap");
+        if(stockHashMap == null) return "stock";
+        HashMap<Integer, Goods> hashMap = new HashMap<>();
+        int number = 1;
+        for(Goods goods : stockHashMap.values()){
+            if(goods.getGoodname().contains(goodname)){
+                hashMap.put(number, goods);
+                number += 1;
+            }
+        }
+        model.addAttribute("stockHashMap", hashMap);
         return "stock";
     }
 }

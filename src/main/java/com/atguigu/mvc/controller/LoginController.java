@@ -63,10 +63,13 @@ public class LoginController {
             String password, HttpServletRequest request) throws IOException {
 //        System.out.println("username: " + username + "password: " + password);
         ModelAndView mav = new ModelAndView();
+
         SqlSession sqlSession = SqlSessionUtils.getSqlSession();
         UserMapper mapper = sqlSession.getMapper(UserMapper.class);
         User user = mapper.checkLogin(username, password);
         if(user != null){
+            request.getSession().setAttribute("User", user);
+//            if(request.getSession().getAttribute("toamount") == null) request.getSession().setAttribute("totamount", 500);
             mav.setViewName("choose_list");
         }
         else mav.setViewName("error");
@@ -74,25 +77,26 @@ public class LoginController {
     }
 
     @RequestMapping("/register_check")
-    public ModelAndView Register_check(String username, String password, HttpServletRequest request) throws IOException {
+    public ModelAndView Register_check(String username, String password, Model model) throws IOException {
         ModelAndView mav = new ModelAndView();
         SqlSession sqlSession = SqlSessionUtils.getSqlSession();
         UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+
         User user = mapper.checkUser(username);
         if(user != null){
 //            用户名重复
-            mav.setViewName("error");
+            mav.setViewName("login");
         }else{
             int id = mapper.insertUser(username, password);
 //        System.out.println("username: " + username + "password: " + password);
 //        System.out.println(user);
             if(id == getStart_ID() + 1){
-                request.getSession().setAttribute("success",1);
-                mav.setViewName("success");
+                model.addAttribute("success", 1);
+                mav.setViewName("login");
                 setStart_ID(id);
             }else{
-                request.getSession().setAttribute("success",1);
-                mav.setViewName("error");
+                model.addAttribute("success", 0);
+                mav.setViewName("login");
             }
         }
         return mav;

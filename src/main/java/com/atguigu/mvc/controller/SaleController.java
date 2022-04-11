@@ -52,7 +52,7 @@ public class SaleController {
     @RequestMapping(value = "/sales_modify", method = RequestMethod.POST)
     public String modify_sales(Sales sales) throws IOException{
         salesDao.modify(sales);
-        return "Sale_list";
+        return "Sales_list";
     }
 //    订单查询
     @RequestMapping(value = "/sales_search", method = RequestMethod.POST)

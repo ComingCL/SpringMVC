@@ -54,63 +54,6 @@
             background-color: #3e8e41;
         }
     </style>
-    <script>
-        //根据商品名查询商品
-        window.search_Goods= function() {
-            var search_name = document.getElementById("search_Goods_name").value;
-            $.ajax({
-                url: "goods_add",//常乐来写
-                type: 'POST',
-                data:{"goodname":search_name},
-                success: function (data) {
-                    $("body").html(data);
-                }
-            });
-        }
-        //删除商品
-        window.delete_Goods= function() {
-            var delete_id = document.getElementById("delete_Goods_id").value;
-            if (delete_id<=0) {
-                alert("商品id必须是正数哦");
-            } else {
-                $(".delSure").click(function () {
-                    $.ajax({
-                        url: "goods_delete?id="+delete_id,
-                        type: 'POST',
-                        success: function (data) {
-                            $("body").html(data);
-                        }
-                    });
-                });
-            }
-        }
-        //增加商品
-        window.add_Goods= function() {
-            var add_name = document.getElementById("add_Goods_name").value;
-            var add_amount= document.getElementById("add_Goods_amount").value;
-            $.ajax({
-                url: "Goods_save",
-                type: 'POST',
-                data:{"goodname":add_name,"amount":add_amount},
-                success: function (data) {
-                    $("body").html(data);
-                }
-            });
-        }
-        //修改商品
-        window.modify_Goods= function() {
-            var add_id= document.getElementById("modify_Goods_id").value;//getElementById用于根据input标签的id值获得对应input标签中的值
-            var add_name = document.getElementById("modify_Goods_name").value;
-            $.ajax({
-                url: "goods_add",//向Controller中的@RequestMapping(value = "/goods_add")对应的方法传参数
-                type: 'POST',
-                data:{"id":add_id,"goodname":add_name},//参数的名字叫id和goodname对应于GoodsMapper.xml中的参数名
-                success: function (data) {
-                    $("body").html(data);
-                }
-            });
-        }
-    </script>
     <script th:inline="javascript">
         window.search_Goods_byname= function() {
             var search_name = document.getElementById("search_Goods_name").value;

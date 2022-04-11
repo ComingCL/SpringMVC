@@ -91,12 +91,12 @@ public class LoginController {
 //        System.out.println("username: " + username + "password: " + password);
 //        System.out.println(user);
             if(id == getStart_ID() + 1){
-                mav.setViewName("success");
                 model.addAttribute("success", 1);
+                mav.setViewName("chooselist");
                 setStart_ID(id);
             }else{
-                mav.setViewName("error");
                 model.addAttribute("success", 0);
+                mav.setViewName("login");
             }
         }
         return mav;

@@ -1,6 +1,7 @@
 package com.atguigu.dao.mvc.test;
 
 import com.atguigu.mvc.dao.AccountDao;
+import com.atguigu.mvc.dao.StockDao;
 import com.atguigu.mvc.dao.mapper.GoodsMapper;
 import com.atguigu.mvc.dao.pojo.Goods;
 import com.atguigu.mvc.utils.SqlSessionUtils;
@@ -15,6 +16,7 @@ import org.junit.Test;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashMap;
 import java.util.List;
 
 public class MyBatistest {
@@ -58,5 +60,13 @@ public class MyBatistest {
     public void testAccount() throws IOException {
         AccountDao accountDao = new AccountDao();
         accountDao.getall();
+    }
+    @Test
+    public void testStock() throws IOException{
+        StockDao stockDao = new StockDao();
+        HashMap<Integer, Goods> goodsHashMap = stockDao.getall();
+        for(Goods goods : goodsHashMap.values()){
+            System.out.println(goods.getGoodname());
+        }
     }
 }

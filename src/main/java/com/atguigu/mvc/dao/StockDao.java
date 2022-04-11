@@ -6,6 +6,7 @@ import com.atguigu.mvc.dao.mapper.SalesMapper;
 import com.atguigu.mvc.dao.pojo.Goods;
 import com.atguigu.mvc.dao.pojo.Purchase;
 import com.atguigu.mvc.dao.pojo.Sales;
+import com.atguigu.mvc.utils.SqlSessionUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
@@ -21,6 +22,7 @@ public class StockDao {
     public HashMap<Integer, Goods> getall() throws IOException {
         HashMap<Integer, Goods> stockHashMap = new HashMap<>();
 
+        sqlSession = SqlSessionUtils.getSqlSession();
         GoodsMapper goodsMapper = sqlSession.getMapper(GoodsMapper.class);
         SalesMapper salesMapper = sqlSession.getMapper(SalesMapper.class);
         PurchaseMapper purchaseMapper = sqlSession.getMapper(PurchaseMapper.class);

@@ -29,12 +29,14 @@ public class StockController {
         if(user == null) return "login";
         HashMap<Integer, Goods> stockHashMap = stockDao.getall();
         boolean isWrong = false;
+        int amount = 0;
         for(Goods goods : stockHashMap.values()){
             if (goods.getAmount() < 0) {
                 isWrong = true;
-                break;
             }
+            amount += goods.getAmount();
         }
+        request.getSession().setAttribute("amount", amount);
         model.addAttribute("stockHashMap", stockHashMap);
         model.addAttribute("isWrong", isWrong);
         return "stock";

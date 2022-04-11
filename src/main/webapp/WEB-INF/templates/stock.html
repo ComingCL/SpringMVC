@@ -19,6 +19,9 @@
     <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
     <style>
         /* 容器 <div> - 需要定位下拉内容 */
+        .larger {
+            font-size: 24pt;
+        }
         .dropdown {
             position: relative;
             display: inline-block;
@@ -139,7 +142,7 @@
 <br><br>
 <div class="table-responsive">
 <table border="1" class="table table-hover">
-    <caption style="text-align: center">库存管理</caption>
+    <caption class="larger" style="text-align: center; color: #1e2223"><b>库存管理</b></captionclass>
     <tr><th>商品编号</th><th>商品名</th><th>库存数量</th></tr>
     <tr th:each="goods : ${stockHashMap.values}">
         <td th:text="${goods.goodid}"></td>

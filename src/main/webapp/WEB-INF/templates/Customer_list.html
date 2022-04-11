@@ -22,6 +22,9 @@
     <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script><!--加上这两行模态框才能正常显示-->
     <style>
 /* 容器 <div> - 需要定位下拉内容 */
+.larger {
+    font-size: 24pt;
+}
 .dropdown {
     position: relative;
     display: inline-block;
@@ -201,7 +204,7 @@
 <form style="display:inline">
     <div class="table-responsive">
         <table border="1" class="table table-hover">
-            <caption style="text-align: center">客户资料</caption>
+            <caption class="larger" style="text-align: center; color: #1e2223"><b>客户资料</b></caption>
             <tr><th>客户编号</th><th>客户名</th><th>电话号码</th><th>开始时间</th><th>结束时间</th></tr>
             <tr th:each="customers : ${customersList}">
                 <td th:text="${customers.customerid}"></td>

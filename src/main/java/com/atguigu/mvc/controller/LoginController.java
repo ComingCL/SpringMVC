@@ -63,13 +63,10 @@ public class LoginController {
             String password, HttpServletRequest request) throws IOException {
 //        System.out.println("username: " + username + "password: " + password);
         ModelAndView mav = new ModelAndView();
-
         SqlSession sqlSession = SqlSessionUtils.getSqlSession();
         UserMapper mapper = sqlSession.getMapper(UserMapper.class);
         User user = mapper.checkLogin(username, password);
         if(user != null){
-            request.getSession().setAttribute("User", user);
-            request.getSession().setAttribute("totamount", 500);
             mav.setViewName("choose_list");
         }
         else mav.setViewName("error");
@@ -77,11 +74,10 @@ public class LoginController {
     }
 
     @RequestMapping("/register_check")
-    public ModelAndView Register_check(String username, String password, Model model) throws IOException {
+    public ModelAndView Register_check(String username, String password, HttpServletRequest request) throws IOException {
         ModelAndView mav = new ModelAndView();
         SqlSession sqlSession = SqlSessionUtils.getSqlSession();
         UserMapper mapper = sqlSession.getMapper(UserMapper.class);
-
         User user = mapper.checkUser(username);
         if(user != null){
 //            用户名重复
@@ -91,12 +87,12 @@ public class LoginController {
 //        System.out.println("username: " + username + "password: " + password);
 //        System.out.println(user);
             if(id == getStart_ID() + 1){
-                model.addAttribute("success", 1);
-                mav.setViewName("chooselist");
+                request.getSession().setAttribute("success",1);
+                mav.setViewName("success");
                 setStart_ID(id);
             }else{
-                model.addAttribute("success", 0);
-                mav.setViewName("login");
+                request.getSession().setAttribute("success",1);
+                mav.setViewName("error");
             }
         }
         return mav;

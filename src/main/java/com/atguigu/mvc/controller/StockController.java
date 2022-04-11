@@ -21,9 +21,7 @@ import java.util.List;
 public class StockController {
     @Autowired
     private StockDao stockDao;
-    @RequestMapping("/stock")
-    public String stock(){ return "stock";}
-    @RequestMapping(value = {"/stock"}, method = RequestMethod.GET)
+    @RequestMapping(value = "/stock")
     public String getAllGoods(Model model, HttpServletRequest request) throws IOException {
         HttpSession session = request.getSession();
         User user = (User)session.getAttribute("User");
@@ -40,22 +38,21 @@ public class StockController {
         request.getSession().setAttribute("amount", amount);
         model.addAttribute("stockHashMap", stockHashMap);
         model.addAttribute("isWrong", isWrong);
-        return "stock";
+        return "Stock_list";
     }
 
     @RequestMapping(value = "/search_stock", method = RequestMethod.POST)
-    public String search_stock(String goodname, Model model){
-        HashMap<Integer, Goods> stockHashMap = (HashMap<Integer, Goods>) model.getAttribute("stockHashMap");
-        if(stockHashMap == null) return "stock";
-        HashMap<Integer, Goods> hashMap = new HashMap<>();
+    public String search_stock(String goodname, Model model) throws IOException {
+        HashMap<Integer, Goods> hashMap = stockDao.getall();
+        if(hashMap == null) return "Stock_list";
+        HashMap<Integer, Goods> stockHashMap = new HashMap<>();
         int number = 1;
-        for(Goods goods : stockHashMap.values()){
+        for(Goods goods : hashMap.values()){
             if(goods.getGoodname().contains(goodname)){
-                hashMap.put(number, goods);
+                stockHashMap.put(number, goods);
                 number += 1;
             }
         }
-        model.addAttribute("stockHashMap", hashMap);
-        return "stock";
+        return "Stock_list";
     }
 }

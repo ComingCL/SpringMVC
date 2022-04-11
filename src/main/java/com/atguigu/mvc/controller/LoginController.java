@@ -77,7 +77,7 @@ public class LoginController {
     }
 
     @RequestMapping("/register_check")
-    public ModelAndView Register_check(String username, String password) throws IOException {
+    public ModelAndView Register_check(String username, String password, Model model) throws IOException {
         ModelAndView mav = new ModelAndView();
         SqlSession sqlSession = SqlSessionUtils.getSqlSession();
         UserMapper mapper = sqlSession.getMapper(UserMapper.class);
@@ -92,9 +92,11 @@ public class LoginController {
 //        System.out.println(user);
             if(id == getStart_ID() + 1){
                 mav.setViewName("success");
+                model.addAttribute("success", 1);
                 setStart_ID(id);
             }else{
                 mav.setViewName("error");
+                model.addAttribute("success", 0);
             }
         }
         return mav;

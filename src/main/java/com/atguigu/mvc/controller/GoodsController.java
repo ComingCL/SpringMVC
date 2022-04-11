@@ -27,7 +27,6 @@ public class GoodsController {
         if(user == null) return "login";
         Collection<Goods> goodsList = goodsDao.getall(request);
         model.addAttribute("goodsList", goodsList);
-
         return "Goods_list";
     }
 

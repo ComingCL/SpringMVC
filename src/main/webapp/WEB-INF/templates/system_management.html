@@ -57,7 +57,7 @@
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     
                         <ul class="nav navbar-nav navbar-right">
-                        <li><a id="current_user" class="hvr-underline-from-center active scroll" href="#">当前用户: <span th:text="${session.User.username}"></span></a></li>
+                        <li><a id="current_user" class="hvr-underline-from-center active scroll" th:href="homepage">当前用户: <span th:text="${session.User.username}"></span></a></li>
                             <li><a class="hvr-underline-from-center active scroll" th:href="homepage">主页</a></li>
                             <li><a class="hvr-underline-from-center scroll scroll" th:href="logout"> 退出登录</a></li>
                             <li><a th:href="Goods" class="hvr-underline-from-center scroll">资料管理</a></li>

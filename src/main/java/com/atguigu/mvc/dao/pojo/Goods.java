@@ -4,21 +4,21 @@ import java.io.Serializable;
 import java.sql.Date;
 
 public class Goods implements Serializable {
-    private int goodid;
+    private Integer goodid;
     private String goodname;
-    private int amount;
+    private Integer amount;
 
-    public Goods(int goodid, String goodname, int amount) {
+    public Goods(Integer goodid, String goodname, Integer amount) {
         this.goodid = goodid;
         this.goodname = goodname;
         this.amount = amount;
     }
 
-    public int getGoodid() {
+    public Integer getGoodid() {
         return goodid;
     }
 
-    public void setGoodid(int goodid) {
+    public void setGoodid(Integer goodid) {
         this.goodid = goodid;
     }
 
@@ -30,12 +30,11 @@ public class Goods implements Serializable {
         this.goodname = goodname;
     }
 
-    public int getAmount() {
+    public Integer getAmount() {
         return amount;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(Integer amount) {
         this.amount = amount;
     }
 }
-

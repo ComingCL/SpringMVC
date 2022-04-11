@@ -190,7 +190,7 @@
     <div class="table-responsive">
     <table border="1" class="table table-hover">
         <caption class="larger" style="text-align: center; color: #1e2223"><b>销售订单</b></captionclass>
-        <tr><th>订单号</th><th>供应商编号</th><th>商品编号</th><th>商品价格</th><th>销售时间</th><th>费用</th><th>是否退货</th></th></tr>
+        <tr><th>订单号</th><th>供应商编号</th><th>商品编号</th><th>商品价格</th><th>销售时间</th><th>数量</th><th>是否退货</th></th></tr>
         <tr th:each="sales : ${salesList}">
             <td th:text="${sales.salesid}"></td>
             <td th:text="${sales.customerid}"></td>
